@@ -61,9 +61,12 @@ const AmbassadorForm: FC = () => {
         form={form}
         onFinish={onFinish()}
         className={"ambassador_form"}>
-          <h1 className={"co_map_title"}>
-            Подать заявку
-          </h1>
+          <div className={"co_map_title_parent"}>
+            <h2 className={"co_map_title"}>
+              Подать заявку
+            </h2>
+          </div>
+
           <h4 className={"co_map_smallsubtitle"}>
             Как к вам обращаться?
           </h4>
