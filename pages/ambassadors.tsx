@@ -2,7 +2,7 @@ import { FC } from 'react'
 import AmbassadorCommunity from '../components/co-map/AmbassadorCommunity'
 import AmbassadorForm from '../components/co-map/AmbassadorForm'
 
-const Test: FC = () => {
+const Ambassadors: FC = () => {
   return (
     <>
       <AmbassadorCommunity/>
@@ -11,4 +11,4 @@ const Test: FC = () => {
   )
 }
 
-export default Test
+export default Ambassadors
