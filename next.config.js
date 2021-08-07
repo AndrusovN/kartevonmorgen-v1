@@ -22,6 +22,7 @@ module.exports = nextTranslate(
               'de',
               'es',
               'pt',
+              'ru',
             ],
           }),
         )
@@ -52,7 +53,7 @@ module.exports = nextTranslate(
           'ru',
         ],
 
-        defaultLocale: 'de',
+        defaultLocale: 'ru',
       },
 
       cssModules: true,

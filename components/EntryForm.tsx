@@ -1,9 +1,9 @@
-import React, { FC, Fragment, useEffect } from 'react'
+import React, { FC, Fragment, useEffect, useState } from 'react'
 import { NextRouter, useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '../store'
 import { Button, Checkbox, Divider, Form, FormInstance, Input, Select, Space, Spin, Typography } from 'antd'
-import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons/lib'
+import { InfoCircleOutlined, MinusCircleOutlined, PlusOutlined } from '@ant-design/icons/lib'
 import isString from 'lodash/isString'
 import isArray from 'lodash/isArray'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -25,6 +25,8 @@ import { renameProperties, setValuesToDefaultOrNull, transformObject } from '../
 import { isValidPhoneNumber } from 'libphonenumber-js'
 import { validate as isValidEmail } from 'isemail'
 import TagsSelect from './TagsSelect'
+import ImageURlTutorialModal from './ImageURlTutorialModal'
+import useTranslation from 'next-translate/useTranslation'
 
 
 const { useForm } = Form
@@ -77,9 +79,7 @@ const setFieldsToDefaultOrNull = (entry: EntryFormType): EntryFormType => {
     version: 0,
   }
 
-  const entryFormWithDefaultValues = setValuesToDefaultOrNull(entry, defaultFieldValues)
-
-  return entryFormWithDefaultValues
+  return setValuesToDefaultOrNull(entry, defaultFieldValues)
 }
 
 
@@ -102,9 +102,7 @@ const transformFormFields = (entry: EntryFormType): EntryFormType => {
   }
 
   const transformedEntry = transformObject(entry, rules)
-  const transformedEntryWithRenamedFields = renameProperties(transformedEntry, fieldsToRename)
-
-  return transformedEntryWithRenamedFields
+  return renameProperties(transformedEntry, fieldsToRename)
 }
 
 
@@ -213,6 +211,12 @@ interface EntryFormProps {
 const EntryForm: FC<EntryFormProps> = (props) => {
   // todo: for a better experience show spinner with the corresponding message when the form is loading
   // for example: fetching the address
+  const { t } = useTranslation('map')
+
+  const [showModalInfo, setShowModalInfo] = useState<boolean>(false)
+  const openImageTutorialModal = () => {
+    setShowModalInfo(true)
+  }
 
   const { category, verb, entryId } = props
 
@@ -274,7 +278,7 @@ const EntryForm: FC<EntryFormProps> = (props) => {
   if (!entries && isEdit) {
     return (
       <div className='center'>
-        <Spin size="large"/>
+        <Spin size='large' />
       </div>
     )
   }
@@ -284,7 +288,7 @@ const EntryForm: FC<EntryFormProps> = (props) => {
     return null
   }
 
-  return (
+  return (<>
     <Form
       layout="vertical"
       size="middle"
@@ -314,14 +318,14 @@ const EntryForm: FC<EntryFormProps> = (props) => {
         name="title"
         rules={[{ required: true, min: 3 }]}
       >
-        <Input placeholder="Title"/>
+        <Input placeholder={t("entryForm.title")}/>
       </Form.Item>
 
       <Form.Item
         name="description"
         rules={[{ required: true, min: 10, max: 250 }]}
       >
-        <TextArea placeholder="Description"/>
+        <TextArea placeholder={t("entryForm.description")}/>
       </Form.Item>
 
       {/*add validation for the three tags*/}
@@ -337,13 +341,13 @@ const EntryForm: FC<EntryFormProps> = (props) => {
             name={'city'}
             noStyle
           >
-            <Input style={{ width: '50%' }} placeholder="City"/>
+            <Input style={{ width: '50%' }} placeholder={t("entryForm.city")}/>
           </Form.Item>
           <Form.Item
             name={'zip'}
             noStyle
           >
-            <Input style={{ width: '50%' }} placeholder="Zip"/>
+            <Input style={{ width: '50%' }} placeholder={t("entryForm.zip")}/>
           </Form.Item>
         </Input.Group>
       </Form.Item>
@@ -353,167 +357,184 @@ const EntryForm: FC<EntryFormProps> = (props) => {
       <Form.Item name="state" hidden/>
 
       <Form.Item name="street">
-        <Input placeholder="Address"/>
+        <Input placeholder={t("entryForm.street")}/>
       </Form.Item>
 
       <Form.Item
         name="lat"
         style={{
-          display: 'inline-block',
-          width: '50%',
-        }}
-      >
-        <Input placeholder="Latitude" disabled/>
-      </Form.Item>
-
-      <Form.Item
-        name="lng"
-        style={{
-          display: 'inline-block',
-          width: '50%',
-        }}
-      >
-        <Input placeholder="Longitude" disabled/>
-      </Form.Item>
-
-      <Divider orientation="left">Contact</Divider>
-
-      <Form.Item name="contact">
-        <Input placeholder="Contact Person" prefix={<FontAwesomeIcon icon="user"/>}/>
-      </Form.Item>
-
-      <Form.Item
-        name="telephone"
-        rules={[
-          {
-            validator: (_, value) => (
-              isValidPhoneNumber(value) ?
-                Promise.resolve() :
-                Promise.reject('not a valid telephone number')
-            ),
-          },
-        ]}
-      >
-        <Input placeholder="Phone" prefix={<FontAwesomeIcon icon="phone"/>}/>
-      </Form.Item>
-
-      <Form.Item
-        name="email"
-        rules={[
-          {
-            validator: (_, value) => (
-              isValidEmail(value) ?
-                Promise.resolve() :
-                Promise.reject('not a valid email')
-            ),
-          },
-        ]}
-      >
-        <Input placeholder="Email" prefix={<FontAwesomeIcon icon="envelope"/>}/>
-      </Form.Item>
-
-      <Form.Item name="homepage">
-        <Input placeholder="homepage" prefix={<FontAwesomeIcon icon="globe"/>}/>
-      </Form.Item>
-
-      <Form.Item name="opening_hours">
-        <Input placeholder="Opening Hours" prefix={<FontAwesomeIcon icon="clock"/>}/>
-      </Form.Item>
-
-      <div style={{ width: '100%', textAlign: 'center' }}>
-        <Link
-          href={process.env.NEXT_PUBLIC_OPENING_HOURS}
-          target="_blank"
+            display: 'inline-block',
+            width: '50%',
+          }}
         >
-          Find out the right format for your time
-        </Link>
-      </div>
+          <Input placeholder={t("entryForm.latitude")} disabled />
+        </Form.Item>
 
-      <Divider orientation="left">Links and Social Media</Divider>
+        <Form.Item
+          name='lng'
+          style={{
+            display: 'inline-block',
+            width: '50%',
+          }}
+        >
+          <Input placeholder={t("entryForm.longitude")} disabled />
+        </Form.Item>
 
-      <Form.List name="custom_links">
-        {(fields, { add, remove }) => (
-          <Fragment>
-            {fields.map(field => (
-              <Space key={field.key} style={{ display: 'flex', marginBottom: 8 }} align="baseline">
-                <Form.Item
-                  {...field}
-                  name={[field.name, 'first']}
-                  fieldKey={[field.fieldKey, 'first']}
-                >
-                  <Input placeholder="First Name"/>
-                </Form.Item>
-                <Form.Item
-                  {...field}
-                  name={[field.name, 'last']}
-                  fieldKey={[field.fieldKey, 'last']}
-                >
-                  <Input placeholder="Last Name"/>
-                </Form.Item>
-                <MinusCircleOutlined onClick={() => remove(field.name)}/>
-              </Space>
-            ))}
-            <Form.Item>
-              <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined/>}>
-                Add field
-              </Button>
-            </Form.Item>
-          </Fragment>
-        )}
-      </Form.List>
+        <Divider orientation='left'>{t('entryForm.contact')}</Divider>
 
-      <Divider orientation="left">Image</Divider>
+        <Form.Item name='contact'>
+          <Input placeholder={t('entryForm.contactPerson')} prefix={<FontAwesomeIcon icon='user' />} />
+        </Form.Item>
 
-      <Form.Item name="image_url">
-        <Input placeholder="URL of an image" prefix={<FontAwesomeIcon icon="camera"/>}/>
-      </Form.Item>
-
-      <Form.Item name="image_link_url">
-        <Input placeholder="Link" prefix={<FontAwesomeIcon icon="link"/>}/>
-      </Form.Item>
-
-      <Divider orientation="left">License</Divider>
-
-      <Form.Item
-        name="license"
-        rules={[{ required: true }]}
-        valuePropName="value"
-      >
-        {/*it's necessary to catch the value of the checkbox, but the out come will be a list*/}
-        {/*so we should grab the first element*/}
-        <Checkbox.Group
-          options={[
+        <Form.Item
+          name='telephone'
+          rules={[
             {
-              label: <Fragment>
-                {`I have read and accept the Terms of the `}
-                <Link
-                  href={process.env.NEXT_PUBLIC_CC_LINK}
-                  target="_blank"
-                >
-                  Creative-Commons License CC0
-                </Link>
-              </Fragment>,
-              value: 'CC0-1.0',
+              validator: (_, value) => (
+                isValidPhoneNumber(value) ?
+                  Promise.resolve() :
+                  Promise.reject('not a valid telephone number')
+              ),
             },
           ]}
-        />
-      </Form.Item>
+        >
+          <Input placeholder={t('entryForm.phone')} prefix={<FontAwesomeIcon icon='phone' />} />
+        </Form.Item>
 
-      <Form.Item name="version" hidden>
-        <Input disabled/>
-      </Form.Item>
+        <Form.Item
+          name='email'
+          rules={[
+            {
+              validator: (_, value) => (
+                isValidEmail(value) ?
+                  Promise.resolve() :
+                  Promise.reject('not a valid email')
+              ),
+            },
+          ]}
+        >
+          <Input placeholder={t('entryForm.email')} prefix={<FontAwesomeIcon icon='envelope' />} />
+        </Form.Item>
 
-      <Button
-        type="primary"
-        htmlType="submit"
-        style={{
-          width: '100%',
-        }}
-      >
-        Submit
-      </Button>
+        <Form.Item name='homepage'>
+          <Input placeholder={t('entryDetails.homepagePlaceholder')} prefix={<FontAwesomeIcon icon='globe' />} />
+        </Form.Item>
 
-    </Form>
+        <Form.Item name='opening_hours'>
+          <Input placeholder={t('entryForm.openingHours')} prefix={<FontAwesomeIcon icon='clock' />} />
+        </Form.Item>
+
+        <div style={{ width: '100%', textAlign: 'center' }}>
+          <Link
+            href={process.env.NEXT_PUBLIC_OPENING_HOURS}
+            target='_blank'
+          >
+            {t('entryForm.generateHours')}
+          </Link>
+        </div>
+
+        <Divider orientation='left'>{t('entryForm.links')}</Divider>
+
+        <Form.List name='custom_links'>
+          {(fields, { add, remove }) => (
+            <Fragment>
+              {fields.map(field => (
+                <Space key={field.key} style={{ display: 'flex', marginBottom: 8 }} align='baseline'>
+                  <Form.Item
+                    {...field}
+                    name={[field.name, 'first']}
+                    fieldKey={[field.fieldKey, 'first']}
+                  >
+                    <Input placeholder='First Name' />
+                  </Form.Item>
+                  <Form.Item
+                    {...field}
+                    name={[field.name, 'last']}
+                    fieldKey={[field.fieldKey, 'last']}
+                  >
+                    <Input placeholder='Last Name' />
+                  </Form.Item>
+                  <MinusCircleOutlined onClick={() => remove(field.name)} />
+                </Space>
+              ))}
+              <Form.Item>
+                <Button type='dashed' onClick={() => add()} block icon={<PlusOutlined />}>
+                  {t('resultlist.addEntry')}
+                </Button>
+              </Form.Item>
+            </Fragment>
+          )}
+        </Form.List>
+
+        <Divider orientation='left'>{t('entryForm.entryImage')}</Divider>
+
+        <Form.Item style={{
+          position: 'relative',
+        }} name='image_url'>
+          <Input placeholder={t('entryForm.imageUrl')}
+                 prefix={<FontAwesomeIcon icon='camera' />} />
+          <InfoCircleOutlined
+            style={{
+              top: '-16px',
+              right: '9px',
+              position: 'absolute',
+              zIndex: 10,
+              cursor: 'pointer',
+              backgroundColor: 'white',
+            }}
+            onClick={openImageTutorialModal} />
+        </Form.Item>
+
+        <Form.Item name='image_link_url'>
+          <Input placeholder={t('entryForm.linkUrl')} prefix={<FontAwesomeIcon icon='link' />} />
+        </Form.Item>
+
+        <Divider orientation='left'>{t('entryForm.license')}</Divider>
+
+        <Form.Item
+          name='license'
+          rules={[{ required: true, message: t('entryForm.acceptLicense') }]}
+          valuePropName='value'
+        >
+          {/*it's necessary to catch the value of the checkbox, but the out come will be a list*/}
+          {/*so we should grab the first element*/}
+          <Checkbox.Group
+            options={[
+              {
+                label: <Fragment>
+                  {t('entryForm.iHaveRead') + ' '}
+                  <Link
+                    href={process.env.NEXT_PUBLIC_CC_LINK}
+                    target='_blank'
+                  >
+                    {t('entryForm.creativeCommonsLicense')}
+                  </Link>
+                </Fragment>,
+                value: 'CC0-1.0',
+              },
+            ]}
+          />
+        </Form.Item>
+
+        <Form.Item name='version' hidden>
+          <Input disabled />
+        </Form.Item>
+
+        <Button
+          type='primary'
+          htmlType='submit'
+          style={{
+            width: '100%',
+          }}
+        >
+          {t('entryForm.save')}
+        </Button>
+      </Form>
+      <ImageURlTutorialModal
+        setShowModalInfo={setShowModalInfo}
+        showModalInfo={showModalInfo}
+      />
+    </>
   )
 }
 
