@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import { NextRouter, useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
 import produce from 'immer'
@@ -20,34 +20,64 @@ import AddEntryButton from './AddEntryButton'
 import BurgerMenu from './BurgerMenu'
 import MapQueryParamsListener from './MapQueryParamsListener'
 import LocateMe from './LocateMe'
+import '../styles/globals.less'
+//
+// const iconLinksByTag = {
+//   ecology: 'https://blog.vonmorgen.org/wp-content/uploads/2021/08/fairer-Handel-neu.svg',
+//   education: 'https://blog.vonmorgen.org/wp-content/uploads/2021/08/Bildung-und-Beratung-neu.svg',
+//   social: 'https://blog.vonmorgen.org/wp-content/uploads/2021/08/Kultur-und-Begegnung-neu.svg',
+//   culture: 'https://blog.vonmorgen.org/wp-content/uploads/2021/08/secondhandverleihen-verschenken-neu.svg',
+//   infrastructure: 'https://blog.vonmorgen.org/wp-content/uploads/2021/08/Initiativen-Netzwerke-neu.svg',
+//   communities: 'https://blog.vonmorgen.org/wp-content/uploads/2021/08/Gemeinschaftsgarten-neu.svg'
+// }
 
-
-const icons = {
-  [Category.EVENT]: null,
-  [Category.COMPANY]: null,
-  [Category.INITIATIVE]: null,
-  [Category.UNKNOWN]: null,
+const iconLinksByTag = {
+  nachbar: 'https://blog.vonmorgen.org/wp-content/uploads/2021/08/fairer-Handel-neu.svg',
+  sozial: 'https://blog.vonmorgen.org/wp-content/uploads/2021/08/Bildung-und-Beratung-neu.svg',
+  fahrradverleih: 'https://blog.vonmorgen.org/wp-content/uploads/2021/08/Kultur-und-Begegnung-neu.svg',
+  exkursionen: 'https://blog.vonmorgen.org/wp-content/uploads/2021/08/secondhandverleihen-verschenken-neu.svg',
+  bio: 'https://blog.vonmorgen.org/wp-content/uploads/2021/08/Initiativen-Netzwerke-neu.svg',
+  umweltbildung: 'https://blog.vonmorgen.org/wp-content/uploads/2021/08/Gemeinschaftsgarten-neu.svg'
 }
 
+const icons = {
+  [Category.INITIATIVE]: 'initiative',
+  [Category.EVENT]: 'event',
+  [Category.COMPANY]: 'company',
+  [Category.UNKNOWN]: 'unknown',
+}
+
+
 // memoize icons to prevent object creations
-const getIcon = (types: Categories) => {
+const getIcon = (types: Categories, tags?: any) => {
+  console.log('TAGS', tags)
+
   // the reason we define types as array is because backend sends us an array of categories
   // and we won't ever know if in the feature we'll need to use the whole array or not
   const typeId = types[0]
   const icon = icons[typeId]
-
-  if (!icon) {
-    // const type = resultType.find(t => t.id === typeId) || Category.UNKNOWN
-    const typeName = CategoryToNameMapper[typeId]
-    icons[typeId] = new Icon({
-      iconUrl: `/projects/main/pins/balloon_${typeName}.svg`,
-      iconSize: new Point(50, 50),
-    })
-
-    return icons[typeId]
-  }
-
-  return icon
+  console.log('icon', icon)
+  const iconUrl = iconLinksByTag[Object.keys(iconLinksByTag).find((el: string) => tags.some((e: string)=> e === el))]
+  const typeName = CategoryToNameMapper[typeId]
+  // if (!icon) {
+  //   icons[typeId] = new Icon({
+  //     iconUrl: 'https://freesvg.org/img/mono-licq.png',
+  //     iconSize: new Point(35, 35),
+  //     shadowUrl: `/projects/main/pins/balloon_${typeName}.svg`,
+  //     shadowSize: [68, 95],
+  //     shadowAnchor: [37, 45],
+  //   })
+  //   return icons[typeId]
+  // }
+  return new Icon({
+    iconUrl: iconUrl || `none`,
+    iconSize: iconUrl ? [30, 30] : [0, 0],
+    // iconAnchor: [50, 70],
+    shadowUrl: `/projects/main/pins/balloon_${typeName}.svg`,
+    shadowSize: [70, 70],
+    // shadowAnchor: [0, 0],
+    className: 'testClassName',
+  })
 }
 
 const onClickOnPin = (router: NextRouter, searchResult: SearchResult) => () => {
@@ -110,6 +140,7 @@ const Map: FC = () => {
   const searchResults: SearchResults = useSelector(
     (state: RootState) => searchResultSelector(state),
   )
+  console.log({ searchResults });
 
   return (
     <MapContainer
@@ -152,7 +183,6 @@ const Map: FC = () => {
             position={markedPinLatLng}
             icon={getIcon([Category.UNKNOWN])}
           >
-
           </Marker>
         )
       }
@@ -162,7 +192,7 @@ const Map: FC = () => {
           <Marker
             key={`map-marker-${searchResult.id}`}
             position={[searchResult.lat, searchResult.lng]}
-            icon={getIcon(searchResult.categories)}
+            icon={getIcon(searchResult.categories, searchResult.tags)}
             eventHandlers={{
               click: onClickOnPin(router, searchResult),
             }}

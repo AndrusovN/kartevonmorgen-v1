@@ -1,26 +1,29 @@
 label,value,headline,bold,underline,italic,fontSize,Icon
-Aktion der Woche,,true,,,,,
-regionale Einkaufsführer,einkaufsführer,,,,,,
-Unternehmen (nachhaltiger Konsum),,true,,,,,
-Cafe & Restaurant ,Cafe Restaurant Gastronomie ,,,,,,
-Lebensmittel ,bio Lebensmittel vegan weltladen,,,,,,
-Kleidung & secondhand (fairfashion),fair fairfashion Kleidung secondhand futurefashion,,,,,,
-Mobilität Fahrrad & Lastenrad,Mobilität fahrrad & lastenrad fahrradwerkstatt fahrradladen,,,,,,
-Initiativen (sozial-ökologisches Engagement),,true,,,,,
-sharing reparieren & Umsonstladen,umsonstladen sharing werkstatt reparatur reparieren upcycling kreislaufwirtschaft circulareconomy,,,,,,
-refill unverpackt ,refill unverpackt zerowaste verpackungsfrei refill-station unverpacktladen,,,,true,,
-Umwelt- & Klimaschutz for future,Umweltschutz Klimaschutz  fridaysforfuture  studentsforfuture  ScientistsForFuture parents4future architects4future ArtistsForFuture libraries4future educators4future filmmakers4future forfuture  psychologistsforfuture families4future EntrepreneursForFuture forestersforfuture friends4future healthforfuture psychologistsforfuture sportsforfuture teachersforfuture togetherforfuture Klima  Klimawandel Erneuerbare-energien  Umwelt naturschutz ,,,,,,
-Bildung & Schule von morgen,Bildung bne Schulevonmorgen bildung-für-nachhaltige-entwicklung Schule Montessori Waldorfschule,,,,,,
-Wohnprojekte & Lebensgemeinschaften,Wohnprojekt Lebensgemeinschaft Ökodorf,,true,,,,
-Bewegungen des Wandels,,true,,,,,
-Gemeinwohlökonomie,gwö ecg ecogood gwö-regionalgruppe energiefeld gwö-unterstützerin gwö-beraterin gwö-mitgliedsunternehmen gwö-peergruppe gwö-peerevaluiert gwö-auditiert,,,,,,
-Grundeinkommen,bge grundeinkommen,,,,,,
-Postwachstum,degrowth postwachstum rethinkeconomy,,,,,,
-Transition Town,transitiontown transition,,,,,,
-Permakultur & regenerative Landwirtschaft,agroforst waldgarten aquaponik biozyklisch-veganer-anbau veganer-gartenbau vegane-landwirtschaft essbare-stadt gemeinschaftsgarten urbangardening gardening urban-gardening gärtnern permakultur permaculture regenerative-landwirtschaft co2-land,,,,,,
-Karte von morgen,kartevonmorgen kvm regpis thempis ideenhochdrei pioneersofchange pocsummit,,,,,,
+X alle Filter löschen (show all) press Esc,,,,true,,,
+ecology ,ecology green organic bio sustainable renewable,,,,,,https://blog.vonmorgen.org/wp-content/uploads/2021/08/fairer-Handel-neu.svg
+education & human kapital,education school schule sdg4,,,,,,https://blog.vonmorgen.org/wp-content/uploads/2021/08/Bildung-und-Beratung-neu.svg
+health & care,health kindergarten,,,,,,https://blog.vonmorgen.org/wp-content/uploads/2021/08/Kultur-und-Begegnung-neu.svg
+culture & creative industries,art artistsforfuture,,,,,,https://blog.vonmorgen.org/wp-content/uploads/2021/08/secondhandverleihen-verschenken-neu.svg
+infrastructure,funding support
+,,,,,,https://blog.vonmorgen.org/wp-content/uploads/2021/08/Initiativen-Netzwerke-neu.svg
+territories & communities ,ecovillages lebensgemeinschaft
+,,,,,,https://blog.vonmorgen.org/wp-content/uploads/2021/08/Gemeinschaftsgarten-neu.svg
+,,,,,,,https://blog.vonmorgen.org/wp-content/uploads/2021/08/Lebensmittel-und-Gastronomie-neu.svg
+,,,,,,,https://blog.vonmorgen.org/wp-content/uploads/2021/08/Reparatur-Handwerk-neu.svg
 ,,,,,,,
-Beispiele zur erweiterten Suche,,true,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+Beispiele zur erweiterten Suche,,,,,,,
 #Fridays – filtern nur nach Stichworten,#Fridays,,,,,,
 Fridays – durchsucht auch Beschreibung,Fridays,,,,,,
 bio fair – findet alles was eins von beiden enthält,bio fair,,,,,,
