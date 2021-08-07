@@ -18,4 +18,6 @@ export const BASICS_ENDPOINTS = {
   getCategories: (group: string): string => `${SELF_API_URL}/dropdowns/${group}/categories`,
   getRegions: (group: string): string => `${SELF_API_URL}/dropdowns/${group}/regions`,
   postEntryRating: (): string => `${BASICS_API_URL}/ratings`,
+
+  getAmbassadorCard: (): string => `${SELF_API_URL}/co-map/ambassador-card`,
 }
