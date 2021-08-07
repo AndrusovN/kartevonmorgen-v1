@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "node server.dev.js",
+    "alt_dev": "node alternative.server.dev.js",
     "build:production": "node server.build.production.js",
     "build:dev": "node server.build.dev.js",
     "build:dev:analyze": "ANALYZE=true node server.build.dev.js",

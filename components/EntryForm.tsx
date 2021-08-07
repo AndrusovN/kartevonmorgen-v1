@@ -192,7 +192,6 @@ const onFinish = (
   entryId: SearchEntryID,
 ) => async (entry: EntryFormType) => {
   // todo: if failed then show a notification
-  console.log('entry', entry)
   const entryWithDefaultValues = setFieldsToDefaultOrNull(entry)
   const adaptedEntry = transformFormFields(entryWithDefaultValues)
 
