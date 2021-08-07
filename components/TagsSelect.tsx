@@ -43,11 +43,15 @@ const TagsSelect: FC<SelectProps<any>> = (props) => {
   }
   const { data: matchedTagsWithFrequency } = useTagMatcher(tagMatcherParams)
 
+  const onChangeHandler = (checkedValues: any) => {
+    console.log("checked = " + checkedValues)
+  }
 
   return (
     <div>
       <Checkbox.Group
         options={tags}
+        onChange={onChangeHandler}
       />
       <Select
         mode="tags"
