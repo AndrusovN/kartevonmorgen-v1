@@ -1,5 +1,4 @@
 import React from 'react'
-import './co_map.less'
 
 //TODO: add a link to the needed place when all the components will be done
 const AmbassadorProgram = () => (

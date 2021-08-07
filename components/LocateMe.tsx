@@ -8,8 +8,6 @@ import { getCurrentPosition } from '../utils/geolocation'
 
 
 
-
-
 export const setQueryParamsToCurrentLocation = (router) => async () => {
   const { query } = router
 

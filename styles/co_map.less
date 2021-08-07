@@ -7,6 +7,11 @@
 
 .co_map_smalltext {
   font-family: 'Open Sans', sans-serif;
+  font-size: small;
+}
+
+.co_map_mediumtext {
+  font-family: 'Open Sans', sans-serif;
   font-size: medium;
 }
 
@@ -65,10 +70,15 @@
 
 }
 
+.bounding_element {
+  width: 55%;
+  min-width: 400px;
+}
+
 .info_community {
   display: flex;
   flex-direction: row;
-  width: 60%;
+  width: 100%;
 }
 
 .ambassador_community {
@@ -92,7 +102,7 @@
 }
 
 .ambassador_form {
-  width: 40%;
+  width: 80%;
   min-width: 300px;
 }
 
@@ -188,4 +198,102 @@
     background-color: #B1D4DE !important;
   }
 
+}
+
+
+// Viktoria's components example
+
+.container {
+  width: 70%;
+  margin: 0 auto;
+}
+
+// How to use map
+
+.how-to-use-title {
+  margin: 20px 0;
+}
+
+.map-instruction-block {
+  display: flex;
+  justify-content: space-between;
+
+  & .description-block {
+    width: 50%;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    padding: 5px 0;
+
+    & > div{
+      padding: 10px 0;
+    }
+
+    & .description {
+      font-family: 'Open Sans', sans-serif;
+    }
+  }
+}
+
+// Ambassador Program
+
+.ambassador-program {
+
+  & .co_map_title {
+    margin: 20px 0;
+  }
+
+  & .main-block {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & .rounded-block {
+      width: 80%;
+      border: 1px solid #1A1A1A;
+      border-radius: 15px;
+      padding: 15px 30px;
+    }
+
+    & .btn {
+      background-color: #A1EBEE;
+      border: 1px solid #1A1A1A;
+      border-radius: 10px;
+      padding: 7px 15px;
+      cursor: pointer;
+      text-decoration: none;
+      color: black;
+
+      &:hover {
+        background-color: #8ee0e5;
+      }
+    }
+  }
+}
+
+// Why Ambassador
+
+.why-ambassador-container {
+  margin: 20px 0;
+
+  & > div {
+    margin: 20px 0;
+  }
+}
+
+.why-ambassador-block {
+  & .huge {
+    font-size: 60px;
+    margin: 0 10px 0 0;
+  }
+}
+
+.reasons-ambassador-block {
+  display: flex;
+  align-items: center;
+}
+
+.selection {
+  width: 100%!important;
 }

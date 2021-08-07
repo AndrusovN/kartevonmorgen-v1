@@ -1,6 +1,5 @@
 import React, { FC } from 'react'
 import Image from 'next/image'
-import './co_map.less'
 
 const instructions = [
   {
