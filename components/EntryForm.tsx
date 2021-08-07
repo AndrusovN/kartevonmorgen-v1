@@ -316,7 +316,7 @@ const EntryForm: FC<EntryFormProps> = (props) => {
 
       <Form.Item
         name="title"
-        rules={[{ required: true, min: 3 }]}
+        rules={[{ required: true, min: 3, message:t('login.minNumCharactersPassword')}]}
       >
         <Input placeholder={t("entryForm.title")}/>
       </Form.Item>
@@ -333,7 +333,7 @@ const EntryForm: FC<EntryFormProps> = (props) => {
         <TagsSelect initialData={entry.tags} setTagsCallback={setTagsCallback}/>
       </Form.Item>
 
-      <Divider orientation="left">Location</Divider>
+      <Divider orientation="left">{t('entryForm.location')}</Divider>
 
       <Form.Item>
         <Input.Group compact>

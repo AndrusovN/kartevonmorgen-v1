@@ -67,7 +67,9 @@
     "links": "Enlaces y redes sociales",
     "linkUrl": "URL del enlace",
     "linkTitle": "Título del enlace (opcional)",
-    "linkDescription": "Descripción del enlace (opcional)"
+    "linkDescription": "Descripción del enlace (opcional)",
+    "latitude": "Latitude",
+    "longitude": "Longitude"
   },
   "entryDetails": {
     "loadingEntry": "Cargando entrada...",
@@ -87,7 +89,8 @@
       "telephone": "Registro por teléfono",
       "homepage": "Registro en línea"
     },
-    "route": "Ruta"
+    "route": "Ruta",
+    "organizer": "organizador(ф)"
   },
   "login": {
     "requiredField": "información requerida",
