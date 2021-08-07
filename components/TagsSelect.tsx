@@ -80,6 +80,7 @@ const TagsSelect: FC<any> = (props) => {
 
   const { data: matchedTagsWithFrequency } = useTagMatcher(tagMatcherParams)
 
+
   // When some checkbox value is changed
   const onCheckboxChange = (checkedValues: string[]) => {
     // This will be the new value of selected tags
