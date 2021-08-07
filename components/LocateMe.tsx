@@ -7,7 +7,6 @@ import { createSlugPathFromQueryAndRemoveSlug } from '../utils/slug'
 import { getCurrentPosition } from '../utils/geolocation'
 
 
-
 export const setQueryParamsToCurrentLocation = (router) => async () => {
   const { query } = router
 
