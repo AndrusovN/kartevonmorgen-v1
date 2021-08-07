@@ -19,7 +19,7 @@ import { ExtendedGeocodeAddress, getCityFromAddress, reverseGeocode } from '../u
 import { validate as isValidEmail } from 'isemail'
 import TagsSelect from './TagsSelect'
 import { InfoCircleOutlined } from '@ant-design/icons'
-import { ImageURlTutorialModal } from './ImageURlTutorialModal'
+import ImageURlTutorialModal from './ImageURlTutorialModal'
 
 
 const { useForm } = Form

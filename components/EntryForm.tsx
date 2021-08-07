@@ -25,7 +25,7 @@ import { renameProperties, setValuesToDefaultOrNull, transformObject } from '../
 import { isValidPhoneNumber } from 'libphonenumber-js'
 import { validate as isValidEmail } from 'isemail'
 import TagsSelect from './TagsSelect'
-import { ImageURlTutorialModal } from './ImageURlTutorialModal'
+import ImageURlTutorialModal from './ImageURlTutorialModal'
 import useTranslation from 'next-translate/useTranslation'
 
 

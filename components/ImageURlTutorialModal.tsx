@@ -8,7 +8,7 @@ interface ImageURlTutorialModalProps {
   showModalInfo: boolean
 }
 
-export const ImageURlTutorialModal: FC<ImageURlTutorialModalProps> = (props) => {
+const ImageURlTutorialModal: FC<ImageURlTutorialModalProps> = (props) => {
   const { setShowModalInfo, showModalInfo } = props
   const { t } = useTranslation('map')
 
@@ -20,7 +20,7 @@ export const ImageURlTutorialModal: FC<ImageURlTutorialModalProps> = (props) => 
     setShowModalInfo(false)
   }
   return <Modal width={'700px'}
-                title='URL'
+                title={t('entryForm.tutorialModalTitle')}
                 style={{
                   top: '50px',
                 }}
@@ -49,3 +49,4 @@ export const ImageURlTutorialModal: FC<ImageURlTutorialModalProps> = (props) => 
     </div>
   </Modal>
 }
+export default ImageURlTutorialModal
