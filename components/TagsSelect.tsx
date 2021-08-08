@@ -8,9 +8,10 @@ import { useRouter } from 'next/router'
 import { BASICS_ENDPOINTS } from '../api/endpoints/BasicsEndpoints'
 import { getProjectNameFromQuery } from '../utils/slug'
 import { CheckboxValueType } from 'antd/es/checkbox/Group'
-
+import tagsDescription from '../public/co-map/tag_descriptions.json'
 
 const { Option } = Select
+
 
 
 const TagsSelect: FC<any> = (props) => {
@@ -56,24 +57,29 @@ const TagsSelect: FC<any> = (props) => {
   }
 
   // List of all "special" tags - tags, which have to be shown in checkboxes
-  const [tags, setTags] = useState<string[]>([])
+  //const [tags, setTags] = useState<string[]>([])
 
   // List of currently selected tags
   const [selectedTags, setSelectedTags] = useState<string[]>(initialData)
 
   // If we have no tags, get them from API
-  if (tags.length === 0) {
+  /*if (tags.length === 0) {
     AxiosInstance.GetRequest(BASICS_ENDPOINTS.getTags() + `?group=${group}`).then(response => {
       if (Array.isArray(response.data)) {
         setTags(response.data)
       }
     });
-  }
+  }*/
+
+  const tagsWithDesc = Object.entries(tagsDescription)
+  const tags = tagsWithDesc.map(tagDesc => tagDesc[0])
 
   // Make option object from tag
   let commonTagsOptions = []
-  tags.forEach(tag => {
-    commonTagsOptions.push({label: tag, value: tag})
+  tagsWithDesc.forEach(tagDesc => {
+    let desc = tagDesc[1]
+    commonTagsOptions.push({label: desc.toString(),
+      value: tagDesc[0]})
   })
 
   const tagMatcherParams: MostPopularTagsParams = {

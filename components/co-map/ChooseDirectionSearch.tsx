@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import tagsDescriptions from '../../public/co-map/tag_descriptions.json'
 
 function ChooseDirectionSearch() {
 
@@ -19,31 +20,17 @@ function ChooseDirectionSearch() {
     return
   }
 
+  let arrayDescriptions = Object.entries(tagsDescriptions)
+
   return (
     <div id={'choose-direction-container'}>
       <div className={'co_map_title'}>Выбрать направление поиска</div>
       <div className={'item-container'}>
-        <ItemDirection link={'https://ssr.kartevonmorgen.org/'} text={'Сохранение окружающей среды'} onClick={() => {
-          redirectToCurrentTags(['ecology']).then(r => console.log(r))
-        }} />
-        <ItemDirection link={'https://ssr.kartevonmorgen.org/'} text={'Забота о людях и их здоровье'} onClick={() => {
-          redirectToCurrentTags(['social']).then(r => console.log(r))
-        }} />
-        <ItemDirection link={'https://ssr.kartevonmorgen.org/'} text={'Культура и креативные индустрии'}
-                       onClick={() => {
-                         redirectToCurrentTags(['culture']).then(r => console.log(r))
-                       }} />
-        <ItemDirection link={'https://ssr.kartevonmorgen.org/'} text={'Развитие сообществ и территорий'}
-                       onClick={() => {
-                         redirectToCurrentTags(['communities'])
-                       }} />
-        <ItemDirection link={'https://ssr.kartevonmorgen.org/'} text={'Образование и развитие человека'}
-                       onClick={() => {
-                         redirectToCurrentTags(['education'])
-                       }} />
-        <ItemDirection link={'https://ssr.kartevonmorgen.org/'} text={'Инфраструктура поддержки'} onClick={() => {
-          redirectToCurrentTags(['infrastructure'])
-        }} />
+        {arrayDescriptions.map(value => {
+          return <ItemDirection link={'https://ssr.kartevonmorgen.org/'} text={value[1]} onClick={() => {
+            redirectToCurrentTags([value[0]]).then(r => console.log(r))
+          }} />
+        })}
       </div>
     </div>
   )
