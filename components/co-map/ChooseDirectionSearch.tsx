@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import tagsDescriptions from '../../public/co-map/tag_descriptions.json'
+import tagsDescriptions from '../../public/co-map/tag_descriptions'
 
 function ChooseDirectionSearch() {
 
@@ -20,15 +20,13 @@ function ChooseDirectionSearch() {
     return
   }
 
-  let arrayDescriptions = Object.entries(tagsDescriptions)
-
   return (
     <div id={'choose-direction-container'}>
       <div className={'co_map_title'}>Выбрать направление поиска</div>
       <div className={'item-container'}>
-        {arrayDescriptions.map(value => {
-          return <ItemDirection link={'https://ssr.kartevonmorgen.org/'} text={value[1]} onClick={() => {
-            redirectToCurrentTags([value[0]]).then(r => console.log(r))
+        {tagsDescriptions.map(({icon, description, title}) => {
+          return <ItemDirection link={'https://ssr.kartevonmorgen.org/'} icon={icon} text={description} onClick={() => {
+            redirectToCurrentTags([title]).then(r => console.log(r))
           }} />
         })}
       </div>
@@ -41,14 +39,16 @@ export default ChooseDirectionSearch
 interface ItemDirectionProps {
   text: string
   link: string
+  icon: string
   onClick: () => void
 }
 
 
-function ItemDirection(props: ItemDirectionProps) {
+function ItemDirection({text, icon, onClick }: ItemDirectionProps) {
   return (
-    <div className={'item-direction co_map_text noselect'} onClick={props.onClick}>
-      {props.text}
-    </div>
+      <div className={'item-direction co_map_text noselect'} onClick={onClick}>
+      <div className='choose-direction-img-container'><img src={icon} className='direction-tag-icon' /></div>
+        {text}
+      </div>
   )
 }

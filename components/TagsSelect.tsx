@@ -1,14 +1,11 @@
 import React, { FC, useState } from 'react'
-import { Checkbox, Form, Select, SelectProps } from 'antd'
+import { Checkbox, Form, Select } from 'antd'
 import { useDebounce } from 'ahooks'
 import useTagMatcher from '../hooks/useTagMatcher'
 import { MostPopularTagsParams } from '../pages/api/v0/entries/most-popular-tags'
-import { AxiosInstance } from '../api'
 import { useRouter } from 'next/router'
-import { BASICS_ENDPOINTS } from '../api/endpoints/BasicsEndpoints'
 import { getProjectNameFromQuery } from '../utils/slug'
-import { CheckboxValueType } from 'antd/es/checkbox/Group'
-import tagsDescription from '../public/co-map/tag_descriptions.json'
+import tagsDescription from '../public/co-map/tag_descriptions'
 
 const { Option } = Select
 
