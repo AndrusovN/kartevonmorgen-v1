@@ -1,9 +1,10 @@
 import { FC, useState } from 'react'
+import Image from 'next/image'
 import { NextRouter, useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
 import produce from 'immer'
 import toString from 'lodash/toString'
-import { Icon, LatLng, latLng, Point } from 'leaflet'
+import L, { Icon, LatLng, latLng, Point } from 'leaflet'
 import { MapContainer, Marker, TileLayer, ZoomControl } from 'react-leaflet'
 import { RootState } from '../slices'
 import searchResultSelector from '../selectors/searchResults'
@@ -21,6 +22,7 @@ import BurgerMenu from './BurgerMenu'
 import MapQueryParamsListener from './MapQueryParamsListener'
 import LocateMe from './LocateMe'
 import '../styles/globals.less'
+import { renderToString } from 'react-dom/server'
 //
 // const iconLinksByTag = {
 //   ecology: 'https://blog.vonmorgen.org/wp-content/uploads/2021/08/fairer-Handel-neu.svg',
@@ -48,36 +50,24 @@ const icons = {
 }
 
 
+
 // memoize icons to prevent object creations
 const getIcon = (types: Categories, tags?: any) => {
-  console.log('TAGS', tags)
 
   // the reason we define types as array is because backend sends us an array of categories
   // and we won't ever know if in the feature we'll need to use the whole array or not
   const typeId = types[0]
-  const icon = icons[typeId]
-  console.log('icon', icon)
   const iconUrl = iconLinksByTag[Object.keys(iconLinksByTag).find((el: string) => tags.some((e: string)=> e === el))]
   const typeName = CategoryToNameMapper[typeId]
-  // if (!icon) {
-  //   icons[typeId] = new Icon({
-  //     iconUrl: 'https://freesvg.org/img/mono-licq.png',
-  //     iconSize: new Point(35, 35),
-  //     shadowUrl: `/projects/main/pins/balloon_${typeName}.svg`,
-  //     shadowSize: [68, 95],
-  //     shadowAnchor: [37, 45],
-  //   })
-  //   return icons[typeId]
-  // }
-  return new Icon({
-    iconUrl: iconUrl || `none`,
-    iconSize: iconUrl ? [30, 30] : [0, 0],
-    // iconAnchor: [50, 70],
-    shadowUrl: `/projects/main/pins/balloon_${typeName}.svg`,
-    shadowSize: [70, 70],
-    // shadowAnchor: [0, 0],
-    className: 'testClassName',
-  })
+
+  return L.divIcon({
+    className: '',
+    iconSize: iconUrl ? [70, 70] : [0, 0],
+    html: renderToString(<div className='map-pin-container'>
+            <img className='pin' src={`/projects/main/pins/balloon_${typeName}.svg`} />
+            <img className='tag-icon' src={iconUrl}  />
+          </div>),
+  });
 }
 
 const onClickOnPin = (router: NextRouter, searchResult: SearchResult) => () => {
@@ -140,7 +130,6 @@ const Map: FC = () => {
   const searchResults: SearchResults = useSelector(
     (state: RootState) => searchResultSelector(state),
   )
-  console.log({ searchResults });
 
   return (
     <MapContainer
