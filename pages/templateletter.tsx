@@ -6,7 +6,7 @@ const TemplateLetter: FC = () => {
 
   return (
     <div className='template'>
-      <div className='instructions__container container'>
+      <div className='instructions__container'>
         <section>
           <h1>Рассылка для новых участников карты</h1>
           <p className='co_map_mediumtext'>Если в новую запись на карте устойчивых практик добавлен адрес эл. почты, то
