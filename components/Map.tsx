@@ -3,7 +3,7 @@ import { NextRouter, useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
 import produce from 'immer'
 import toString from 'lodash/toString'
-import { Icon, LatLng, latLng, Point } from 'leaflet'
+import L, { LatLng, latLng } from 'leaflet'
 import { MapContainer, Marker, TileLayer, ZoomControl } from 'react-leaflet'
 import { RootState } from '../slices'
 import searchResultSelector from '../selectors/searchResults'
@@ -20,38 +20,50 @@ import AddEntryButton from './AddEntryButton'
 import BurgerMenu from './BurgerMenu'
 import MapQueryParamsListener from './MapQueryParamsListener'
 import LocateMe from './LocateMe'
+import { renderToString } from 'react-dom/server'
+import '../styles/globals.less'
 import ShareEntryButton from './ShareEntryButton'
-import { MapModalMode, ModalComponent } from './MapShareModal'
+import { MapModalMode, MapShareModal } from './MapShareModal'
 import { MapCustomClassZoomControl } from './MapCustomClassZoomController'
 
 
+// ! these icons were uploaded to hosting because local imports don't work
+const iconLinksByTag = {
+  ecology: 'https://svgshare.com/i/Zxm.svg',
+  education: 'https://svgshare.com/i/Zxx.svg',
+  health: 'https://svgshare.com/i/ZxT.svg',
+  culture: 'https://svgshare.com/i/Zvs.svg',
+  infrastructure: 'https://svgshare.com/i/Zy8.svg',
+  communities: 'https://svgshare.com/i/Zwo.svg'
+}
 
 const icons = {
-  [Category.EVENT]: null,
-  [Category.COMPANY]: null,
-  [Category.INITIATIVE]: null,
-  [Category.UNKNOWN]: null,
+  [Category.INITIATIVE]: 'initiative',
+  [Category.EVENT]: 'event',
+  [Category.COMPANY]: 'company',
+  [Category.UNKNOWN]: 'unknown',
 }
 
 // memoize icons to prevent object creations
-const getIcon = (types: Categories) => {
+const getIcon = (types: Categories, tags?: any) => {
+
   // the reason we define types as array is because backend sends us an array of categories
   // and we won't ever know if in the feature we'll need to use the whole array or not
   const typeId = types[0]
-  const icon = icons[typeId]
+  const iconUrl = iconLinksByTag[Object.keys(iconLinksByTag).find((el: string) => tags?.some((e: string)=> e === el))]
+  const typeName = CategoryToNameMapper[typeId]
+  const pinUrl = `/projects/main/pins/balloon_${typeName}.svg`
 
-  if (!icon) {
-    // const type = resultType.find(t => t.id === typeId) || Category.UNKNOWN
-    const typeName = CategoryToNameMapper[typeId]
-    icons[typeId] = new Icon({
-      iconUrl: `/projects/main/pins/balloon_${typeName}.svg`,
-      iconSize: new Point(50, 50),
-    })
+  const htmlIconString = <div className='map-pin-container'>
+    <img src={`/projects/main/pins/balloon_${typeName}.svg`} className='pin' width={70} height={70} />
+    <img src={iconUrl ?? 'none'} className='tag-icon' width={iconUrl ? 15 : 0} height={iconUrl ? 15 : 0} />
+  </div>
 
-    return icons[typeId]
-  }
-
-  return icon
+  return L.divIcon({
+    className: 'tag-icon',
+    iconSize: iconUrl ? [70, 70] : [0, 0],
+    html: renderToString(htmlIconString),
+  });
 }
 
 const onClickOnPin = (router: NextRouter, searchResult: SearchResult) => () => {
@@ -145,17 +157,17 @@ const Map: FC = () => {
 
       <MapCustomClassZoomControl createClass={createClass} setCreateClass={setCreateClass}/>
 
-      <ModalComponent isModalVisible={isModalVisibleEmbed} setIsModalVisible={setIsModalVisibleEmbed} mode={MapModalMode.EMBED} />
+      <MapShareModal isModalVisible={isModalVisibleEmbed} setIsModalVisible={setIsModalVisibleEmbed} mode={MapModalMode.EMBED} />
 
-      <ModalComponent isModalVisible={isModalVisibleSubscribe} setIsModalVisible={setIsModalVisibleSubscribe} mode={MapModalMode.SUBSCRIPTION} />
+      <MapShareModal isModalVisible={isModalVisibleSubscribe} setIsModalVisible={setIsModalVisibleSubscribe} mode={MapModalMode.SUBSCRIPTION} />
 
       <div id="map-top-right">
         <BurgerMenu />
       </div>
 
       <div className={'map-bottom-right'}>
-        <AddEntryButton />
-        <LocateMe />
+          <AddEntryButton />
+          <LocateMe />
       </div>
 
       <div id="map-bottom-share">
@@ -177,7 +189,6 @@ const Map: FC = () => {
             position={markedPinLatLng}
             icon={getIcon([Category.UNKNOWN])}
           >
-
           </Marker>
         )
       }
@@ -187,7 +198,7 @@ const Map: FC = () => {
           <Marker
             key={`map-marker-${searchResult.id}`}
             position={[searchResult.lat, searchResult.lng]}
-            icon={getIcon(searchResult.categories)}
+            icon={getIcon(searchResult.categories, searchResult.tags)}
             eventHandlers={{
               click: onClickOnPin(router, searchResult),
             }}
