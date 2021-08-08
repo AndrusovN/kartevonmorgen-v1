@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react'
-import { Alert, Button, Form, Input } from 'antd'
+import { Alert, Button, Form, Input, message } from 'antd'
 import { AxiosInstance } from '../../api'
 import { BASICS_ENDPOINTS } from '../../api/endpoints/BasicsEndpoints'
 
@@ -16,47 +16,29 @@ const { useForm } = Form
 
 const ALERT_DISAPPEARING_TIME = 10000
 
+const MESSAGE_KEY = "sending_application_messag"
+
 
 const AmbassadorForm: FC = () => {
 
-  const [state, setState] = useState<'input' | 'received' | 'error'>('input')
-
   const onFinish = () => async (answer: AmbassadorFormType) => {
     console.log(answer)
+    message.loading({content: "Отправка...", key: MESSAGE_KEY})
     AxiosInstance.PostRequest(BASICS_ENDPOINTS.co_map.postAmbassadorAssignment(), answer).then(response => {
       if (response.status === 200) {
-        setState('received')
+        message.success({content: "Отправлено!", key: MESSAGE_KEY})
+        form.resetFields()
       } else {
-        setState('error')
+        message.error({content: "Ошибка! :(", key: MESSAGE_KEY})
       }
     })
   }
 
   const [form] = useForm<AmbassadorFormType>()
 
-  const [alertMessage, setAlertMessage] = useState(<div/>)
-
-
-  if (state === 'received') {
-    setAlertMessage(<Alert message={"Заявка успешно отправлена!"} type={"success"}/>)
-    setTimeout(setAlertMessage.bind(<div/>), ALERT_DISAPPEARING_TIME)
-
-  }
-
-  if (state === 'error') {
-    setAlertMessage(<Alert message={"Что-то пошло не так... :( Попробуйте еще раз"} type={"error"}/>)
-    setTimeout(setAlertMessage.bind(<div/>), ALERT_DISAPPEARING_TIME)
-  }
-
-  if (state === 'received' || state === 'error') {
-    form.resetFields()
-    setState('input')
-  }
-
-
   return (
     <>
-      <div className={"ambassador_form_div"}>
+      <div className={"ambassador_form_div"} id={"ambassador_form"}>
         <Form
         form={form}
         onFinish={onFinish()}
@@ -138,14 +120,6 @@ const AmbassadorForm: FC = () => {
 
 
         </Form>
-      </div>
-      <div className={"ambassador_form_div"}>
-        <div
-          style={{
-            width: '50%'
-          }}>
-          {alertMessage}
-        </div>
       </div>
     </>
   )

@@ -8,15 +8,17 @@ import { getElementById } from 'domutils'
 function HeaderCardContainer() {
 
   const scrollToMyRef = (ref) => {
-    window.scrollTo(0, ref)
+    window.scrollTo({top: ref, behavior: "smooth"})
   }
 
   const router = useRouter()
   let yToScroll = 0
-  
+
   if(process.browser) {
     let howTo = document.getElementById("HowToUseMap")
-    yToScroll = howTo.getBoundingClientRect().top
+    if (howTo) {
+      yToScroll = howTo.getBoundingClientRect().top
+    }
   }
 
   return (

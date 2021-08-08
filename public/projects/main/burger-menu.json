@@ -1,12 +1,12 @@
 [
   {
-    "link": "https://kartevonmorgen.org/",
+    "link": "https://co-map.ru/",
     "title": "home",
     "icon": "home",
     "policy": "self"
   },
   {
-    "link": "https://blog.vonmorgen.org/piloten/",
+    "link": "https://co-map.ru/docs/",
     "title": "join",
     "icon": "user-friends",
     "policy": "newTab"
@@ -18,19 +18,19 @@
     "policy": "newTab"
   },
   {
-    "link": "https://blog.vonmorgen.org/kontakt/",
+    "link": "https://co-map.ru/",
     "title": "contact",
     "icon": "headset",
     "policy": "newTab"
   },
   {
-    "link": "https://blog.vonmorgen.org/",
+    "link": "https://co-map.ru/",
     "title": "aboutUs",
     "icon": "users",
     "policy": "newTab"
   },
   {
-    "link": "https://blog.vonmorgen.org/datenschutzerklarung/",
+    "link": "https://co-map.ru/privacy/",
     "title": "privacy",
     "icon": "user-shield",
     "policy": "newTab"
