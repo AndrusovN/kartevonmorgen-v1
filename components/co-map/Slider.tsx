@@ -1,7 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 import { Carousel } from 'antd'
 import { AxiosInstance } from '../../api'
-import { BASICS_ENDPOINTS } from '../../api/endpoints/BasicsEndpoints'
 import { Card } from './Сard'
 
 type CardType = {
