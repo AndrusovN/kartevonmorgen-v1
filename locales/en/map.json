@@ -89,7 +89,8 @@
       "telephone": "Register by phone",
       "homepage": "Register online"
     },
-    "route": "Route"
+    "route": "Route",
+    "organizer": "organizer"
   },
   "login": {
     "requiredField": "required field",

@@ -21,6 +21,7 @@ import TagsSelect from './TagsSelect'
 import { SLUG_ELEMENTS_TO_DELETE_ON_REDIRECT } from './EntryForm'
 import { InfoCircleOutlined } from '@ant-design/icons'
 import ImageURlTutorialModal from './ImageURlTutorialModal'
+import useTranslation from 'next-translate/useTranslation'
 
 
 const { useForm } = Form
@@ -144,6 +145,7 @@ interface EventFormProps {
 const EventForm: FC<EventFormProps> = (props) => {
 
   const { verb, eventId } = props
+  const { t } = useTranslation('map')
 
   const dispatch = useDispatch()
 
@@ -227,9 +229,9 @@ const EventForm: FC<EventFormProps> = (props) => {
 
         <Form.Item
           name='title'
-          rules={[{ required: true, min: 3 }]}
+          rules={[{ required: true, min: 3 , message: t('entryForm.minNumCharactersTitle')}]}
         >
-          <Input placeholder='Title' />
+          <Input placeholder={t('entryForm.title')} />
         </Form.Item>
 
         <Form.Item
@@ -246,14 +248,14 @@ const EventForm: FC<EventFormProps> = (props) => {
           name='description'
           rules={[{ required: true }, { min: 10 }, { max: 250 }]}
         >
-          <TextArea placeholder='Description' />
+          <TextArea placeholder={t('entryForm.description')} />
         </Form.Item>
 
         <Form.Item name='tags'>
           <TagsSelect setTagsCallback={setTagsCallback} initialData={tagsInitial} />
         </Form.Item>
 
-        <Divider orientation='left'>Location</Divider>
+        <Divider orientation='left'>{t('entryForm.location')}</Divider>
 
         <Form.Item>
           <Input.Group compact>
@@ -261,13 +263,13 @@ const EventForm: FC<EventFormProps> = (props) => {
               name={'city'}
               noStyle
             >
-              <Input style={{ width: '50%' }} placeholder='City' />
+              <Input style={{ width: '50%' }} placeholder={t('entryForm.city')} />
             </Form.Item>
             <Form.Item
               name={'zip'}
               noStyle
             >
-              <Input style={{ width: '50%' }} placeholder='Zip' />
+              <Input style={{ width: '50%' }} placeholder={t('entryForm.zip')} />
             </Form.Item>
           </Input.Group>
         </Form.Item>
@@ -277,7 +279,7 @@ const EventForm: FC<EventFormProps> = (props) => {
         <Form.Item name='state' hidden />
 
         <Form.Item name='street'>
-          <Input placeholder='Address' />
+          <Input placeholder={t('entryForm.street')} />
         </Form.Item>
 
         <Form.Item
@@ -287,7 +289,7 @@ const EventForm: FC<EventFormProps> = (props) => {
             width: '50%',
           }}
         >
-          <Input placeholder='Latitude' disabled />
+          <Input placeholder={t('entryForm.latitude')} disabled />
         </Form.Item>
 
         <Form.Item
@@ -297,13 +299,13 @@ const EventForm: FC<EventFormProps> = (props) => {
             width: '50%',
           }}
         >
-          <Input placeholder='Longitude' disabled />
+          <Input placeholder={t('entryForm.longitude')} disabled />
         </Form.Item>
 
-        <Divider orientation='left'>Contact</Divider>
+        <Divider orientation='left'>{t('entryForm.contact')}</Divider>
 
         <Form.Item name='contact'>
-          <Input placeholder='Contact Person' prefix={<FontAwesomeIcon icon='user' />} />
+          <Input placeholder={t('entryForm.contactPerson')} prefix={<FontAwesomeIcon icon='user' />} />
         </Form.Item>
 
         <Form.Item
@@ -318,7 +320,7 @@ const EventForm: FC<EventFormProps> = (props) => {
             },
           ]}
         >
-          <Input placeholder='Phone' prefix={<FontAwesomeIcon icon='phone' />} />
+          <Input placeholder={t('entryForm.phone')} prefix={<FontAwesomeIcon icon='phone' />} />
         </Form.Item>
 
         <Form.Item
@@ -333,11 +335,11 @@ const EventForm: FC<EventFormProps> = (props) => {
             },
           ]}
         >
-          <Input placeholder='Email' prefix={<FontAwesomeIcon icon='envelope' />} />
+          <Input placeholder={t('entryForm.email')} prefix={<FontAwesomeIcon icon='envelope' />} />
         </Form.Item>
 
         <Form.Item name='homepage'>
-          <Input placeholder='homepage' prefix={<FontAwesomeIcon icon='globe' />} />
+          <Input placeholder={t('entryDetails.homepagePlaceholder')} prefix={<FontAwesomeIcon icon='globe' />} />
         </Form.Item>
 
         <Form.Item name='created_by' hidden>
@@ -345,17 +347,17 @@ const EventForm: FC<EventFormProps> = (props) => {
         </Form.Item>
 
         <Form.Item name='organizer'>
-          <Input placeholder='organizer' prefix={<FontAwesomeIcon icon='user' />} />
+          <Input placeholder={t('entryDetails.organizer')} prefix={<FontAwesomeIcon icon='user' />} />
         </Form.Item>
 
         <Form.Item name='registration' hidden>
           <Input disabled />
         </Form.Item>
 
-        <Divider orientation='left'>Image</Divider>
+        <Divider orientation='left'>{t('entryForm.entryImage')}</Divider>
 
         <Form.Item name='image_url'>
-          <Input placeholder='URL of an image' prefix={<FontAwesomeIcon icon='camera' />} />
+          <Input placeholder={t('entryForm.imageUrl')} prefix={<FontAwesomeIcon icon='camera' />} />
           <InfoCircleOutlined
             style={{
               top: '-16px',
@@ -369,14 +371,14 @@ const EventForm: FC<EventFormProps> = (props) => {
         </Form.Item>
 
         <Form.Item name='image_link_url'>
-          <Input placeholder='Link' prefix={<FontAwesomeIcon icon='link' />} />
+          <Input placeholder={t('entryForm.linkUrl')} prefix={<FontAwesomeIcon icon='link' />} />
         </Form.Item>
 
-        <Divider orientation='left'>License</Divider>
+        <Divider orientation='left'>{t('entryForm.license')}</Divider>
 
         <Form.Item
           name='license'
-          rules={[{ required: true }]}
+          rules={[{ required: true , message: t('entryForm.acceptLicense')}]}
           valuePropName='value'
         >
           {/*it's necessary to catch the value of the checkbox, but the out come will be a list*/}
@@ -385,12 +387,12 @@ const EventForm: FC<EventFormProps> = (props) => {
             options={[
               {
                 label: <Fragment>
-                  {`I have read and accept the Terms of the `}
+                  {t('entryForm.iHaveRead')}
                   <Link
                     href={process.env.NEXT_PUBLIC_CC_LINK}
                     target='_blank'
                   >
-                    Creative-Commons License CC0
+                    {t('entryForm.creativeCommonsLicense')}
                   </Link>
                 </Fragment>,
                 value: 'CC0-1.0',
@@ -407,7 +409,7 @@ const EventForm: FC<EventFormProps> = (props) => {
             width: '100%',
           }}
         >
-          Submit
+          {t('entryForm.save')}
         </Button>
       </Form>
       <ImageURlTutorialModal
