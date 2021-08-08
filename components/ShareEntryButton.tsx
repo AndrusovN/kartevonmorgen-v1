@@ -78,7 +78,7 @@ const ShareEntryButton: FC<ShareEntryButtonProps> = (props) => {
       <Button className={'main-button'}
               onClick={() => mainButtonHandler()}>
         <FontAwesomeIcon icon="share" color="black" />
-        <span style={{ marginLeft: '5px' }}>Share</span>
+        <span style={{ marginLeft: '5px' }}>{t("share")}</span>
       </Button>
     </div>
 
