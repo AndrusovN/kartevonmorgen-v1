@@ -24,7 +24,7 @@ const instructions = [
 
 
 const HowToUseMap: FC = () => (
-  <div>
+  <div id={"HowToUseMap"}>
     <div className='co_map_title how-to-use-title'>Как использовать карту</div>
     {
       instructions.map(({title, instruction, reason, image}) => <div className='map-instruction-block'>

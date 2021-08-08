@@ -145,7 +145,7 @@ const Map: FC = () => {
 
       <MapCustomClassZoomControl createClass={createClass} setCreateClass={setCreateClass}/>
 
-      <div className={`${showButtons ? 'map-bottom-right map-bottom-right-open' : 'map-bottom-right'}`}>
+      <div className={'map-bottom-right'}>
         <AddEntryButton />
         <LocateMe />
       </div>
@@ -156,7 +156,7 @@ const Map: FC = () => {
                           subscribeHandler={() => {setIsModalVisibleSubscribe(true)}}/>
       </div>
 
-      <ZoomControl position={'topright'} />
+      <ZoomControl position={'bottomright'} />
 
       <div id="map-top-right">
         <BurgerMenu />

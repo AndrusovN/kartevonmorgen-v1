@@ -25,5 +25,6 @@ export const BASICS_ENDPOINTS = {
     getAmbassadorCommunityParams: (): string => `${SELF_API_URL}/co-map/ambassador_community`,
     postAmbassadorAssignment: (): string => `${SELF_API_URL}/co-map/ambassador_application`,
     getAmbassadorCard: (): string => `${SELF_API_URL}/co-map/ambassador-card`,
+    getCollaborators: (): string => `${SELF_API_URL}/co-map/collaborators`
   }
 }

@@ -2,6 +2,8 @@ import React, { FC } from 'react'
 import { Col, Row, Typography } from 'antd'
 import Image from 'next/image'
 import './../../styles/co_map.less'
+import Slider from './Slider'
+import { BASICS_ENDPOINTS } from '../../api/endpoints/BasicsEndpoints'
 
 const { Title, Paragraph } = Typography
 
@@ -15,7 +17,7 @@ export const TeamCoMap: FC = () => {
           textAlign: 'center',
         }}
       >
-        <span>Карта создана международной компанией</span>
+        <span>Карта создана международной командой</span>
       </Title>
       <Row
         justify="center"
@@ -64,6 +66,8 @@ export const TeamCoMap: FC = () => {
         </Col>
 
       </Row>
+
+      <Slider API_URL={BASICS_ENDPOINTS.co_map.getCollaborators()}/>
 
     </div>
   )

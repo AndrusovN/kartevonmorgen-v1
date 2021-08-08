@@ -2,6 +2,7 @@ import React from 'react'
 import { Button } from 'antd'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
+import { getElementById } from 'domutils'
 
 
 function HeaderCardContainer() {
@@ -11,18 +12,23 @@ function HeaderCardContainer() {
   }
 
   const router = useRouter()
-
+  let yToScroll = 0
+  
+  if(process.browser) {
+    let howTo = document.getElementById("HowToUseMap")
+    yToScroll = howTo.getBoundingClientRect().top
+  }
 
   return (
     <div id={'header-card-container'}>
       <HeaderCard title={'Каждому'} text={'Найдите места, где люди создают устойчивое будущее'}
-                  onClick={() => scrollToMyRef('fdfd')} />
+                  onClick={() => scrollToMyRef(yToScroll)} />
       <HeaderCard title={'Амбассадорам'}
                   text={'Станьте частью глобального движения в роли локального автора карты co-map.ru'}
                   onClick={() => {
                     router.replace(
                       {
-                        pathname: '/2121',
+                        pathname: '/ambassadors',
                       })
                   }} />
 
