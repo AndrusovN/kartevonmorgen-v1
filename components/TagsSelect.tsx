@@ -184,8 +184,6 @@ const TagsSelect: FC<any> = (props) => {
     setTagsCallback(selectedTags)
   }
 
-  console.log("drawing tags select")
-
   let selectElement = <Select
     value={selectedTags}
     mode="multiple"

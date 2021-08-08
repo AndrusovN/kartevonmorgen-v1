@@ -1,15 +1,15 @@
-import { Button, Modal, notification } from 'antd'
+import { Button, Modal, notification, Tooltip } from 'antd'
 import React, { FC, useEffect, useState } from 'react'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { stackoverflowLight } from 'react-syntax-highlighter/dist/esm/styles/hljs'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { convertBBoxToString, uniqId, validateEmail } from '../utils/utils'
-import SearchTags from './SearchTags'
+import { convertBBoxToString ,validateEmail } from '../utils/utils'
 import { useMap } from 'react-leaflet'
 import { AxiosInstance } from '../api'
 import { BASICS_ENDPOINTS } from '../api/endpoints/BasicsEndpoints'
 import useTranslation from 'next-translate/useTranslation'
+import TagsSelect from './TagsSelect'
 
 const getIframeCode = (url) => {
   return (
@@ -25,16 +25,7 @@ target="_blank" rel="noreferrer noopener" aria-label=" (öffnet in neuem Tab)">
   )
 }
 
-const titleOptions = [
-  {
-    label: 'Report only new entries',
-    value: 'new',
-  },
-  {
-    label: 'Report new entries and updates to existing entries',
-    value: 'all',
-  },
-]
+
 export enum MapModalMode {
   SUBSCRIPTION="subscription",
   EMBED="embed"
@@ -47,7 +38,7 @@ interface ModalComponentProps {
   mode: MapModalMode
 }
 
-export const ModalComponent:FC<ModalComponentProps> = (props) => {
+export const MapShareModal:FC<ModalComponentProps> = (props) => {
 
   //common handlers
 
@@ -94,8 +85,8 @@ const Embed:FC<ModalVariationProps> = (props) => {
   }, [])
 
 return (
-  <Modal visible={props.isModalVisible} width={'800px'} key={uniqId()} onCancel={props.handleCancel}
-         footer={[<FooterEmbed handleCancel={props.handleCancel} handleOk={props.handleOk} key={uniqId()} url={url}/>]}>
+  <Modal visible={props.isModalVisible} width={'800px'} key={"embed-modal"} onCancel={props.handleCancel}
+         footer={[<FooterEmbed key={"embed-footer"} handleCancel={props.handleCancel} handleOk={props.handleOk} url={url}/>]}>
     <div style={{marginTop:"30px"}}>
       <SyntaxHighlighter language="javascript" style={stackoverflowLight}>
         {getIframeCode(url)}
@@ -107,6 +98,19 @@ return (
 
 const Subscribe:FC<ModalVariationProps> = (props) => {
 
+  const { t } = useTranslation('map')
+
+  const titleOptions = [
+    {
+      label: t('modal.subscribe.enterType.all'),
+      value: 'new',
+    },
+    {
+      label: t('modal.subscribe.enterType.upd'),
+      value: 'all',
+    },
+  ]
+
   const [email, setEmail] = useState('')
   const [frequency, setFrequency] = useState('week')
   const [currentType, setCurrentType] = useState(titleOptions[0])
@@ -115,8 +119,6 @@ const Subscribe:FC<ModalVariationProps> = (props) => {
     errorMail: false,
     errorTags: false
   })
-  const { t } = useTranslation('map')
-
 
   const map = useMap()
   const bbox = convertBBoxToString(map.getBounds()).split(',')
@@ -171,38 +173,42 @@ const Subscribe:FC<ModalVariationProps> = (props) => {
       .catch((error) => console.log(error))
   }
 
-
-
-
   return (
     <Modal visible={props.isModalVisible} width={'500px'} className={'modal-subscribe'} onCancel={props.handleCancel}
            footer={[<FooterSubscribe handleCancel={props.handleCancel} handleOk={() => validateData()}
-                                     key={uniqId()} />]}>
+                                     key={"subscribe-modal"} />]}>
       <div className={'input-container'}>
-        <span className={'text'}>Please enter your email</span>
-        {error.errorMail && <span className={'error-text'}>Email is not correctly</span>}
+        <span className={'text'}>{t('modal.subscribe.enterEmail')}</span>
+        {error.errorMail && <span className={'error-text'}>{t('modal.subscribe.errorEmail')}</span>}
         <input className={`input ${error.errorMail && 'error'}`}
                value={email}
                onChange={handlerEmailChange} />
 
-        <span className={'text'}>Please enter tags for your subscribe</span>
-        {error.errorTags && <span className={'error-text'}> Select at least 1 tag</span>}
-        <SearchTags optionsCount={arrayOfTags} addOptionCount={setArrayOfTags} />
-        <span className={'text-margin'}>Please choose report frequency</span>
+        <span className={'text'}>{t('modal.subscribe.enterTags')}</span>
+        {error.errorTags && <span className={'error-text'}>{t('modal.subscribe.errorEmail')}</span>}
+
+
+        <TagsSelect
+          setTagsCallback={(arrayOfTags) => {setArrayOfTags(arrayOfTags)}}
+        />
+
+
+
+        <span className={'text-margin'}>{t('modal.subscribe.enterFrequency.question')}</span>
         <select className={'select'} value={frequency} onChange={(e) => {
           setFrequency(e.target.value)
         }}>
-          <option>hour</option>
-          <option>day</option>
-          <option>week</option>
+          <option>{t('modal.subscribe.enterFrequency.hour')}</option>
+          <option>{t('modal.subscribe.enterFrequency.day')}</option>
+          <option>{t('modal.subscribe.enterFrequency.week')}</option>
         </select>
-        <span className={'text-margin'}>Please choose type of report</span>
+        <span className={'text-margin'}>{t('modal.subscribe.enterType.question')}</span>
       </div>
 
       <div className={'checkbox-container'}>
         {titleOptions.map((el, index) => {
           return (
-            <label className={'label-flex'}>
+            <label className={'label-flex'} key={index+el.label}>
               <input type="radio" className="option-input radio" name="type"
                      checked={currentType.label === el.label}
                      onChange={() => handlerRadioChange(el.label)} key={index + el.label} />
@@ -229,22 +235,22 @@ const FooterEmbed:FC<FooterType> = (props) => {
 
   const showNotification = () => {
     notification.open({
-      message: 'IFrame copied to clipboard successfully!',
+      message: t('growler.linkCopied'),
     });
   }
 
   return (
-    <div className={'modal-footer-embed'} key={uniqId()}>
-      <Button key={uniqId()} onClick={props.handleCancel} className={'footer-button-embed'}>
+    <div className={'modal-footer-embed'} >
+      <Button  onClick={props.handleCancel} className={'footer-button-embed'}>
         <FontAwesomeIcon icon="ban" color="black" />
         <span className={'button-text'}>{t('modal.locate.close')}</span>
       </Button>
-      <Button key={uniqId()} onClick={props.handleOk} href={'https://blog.vonmorgen.org/iframes/'}
+      <Button  onClick={props.handleOk} href={'https://blog.vonmorgen.org/iframes/'}
               className={'footer-button-embed'}>
         {t("modal.embed.findOutMore")}
       </Button>
       <CopyToClipboard text={getIframeCode(props.url)}>
-        <Button key={uniqId()} className={'footer-button-embed'} onClick={() => {showNotification()}}>
+        <Button className={'footer-button-embed'} onClick={() => {showNotification()}}>
           <FontAwesomeIcon icon="copy" color="black" />
           <span className={'button-text'}>{t('copy')}</span>
         </Button>
@@ -256,13 +262,15 @@ const FooterSubscribe:FC<FooterType> = (props) => {
   const { t } = useTranslation('map')
 
   return (
-    <div className={'modal-footer-subscribe'} key={uniqId()}>
-      <Button key={uniqId()} onClick={props.handleOk} className={'footer-button-subscribe'}>
+    <div className={'modal-footer-subscribe'} >
+      <Tooltip placement="left" title={"Now it not working 0_0 Sorry"}>
+      <Button  onClick={props.handleOk} className={'footer-button-subscribe'} disabled={true}>
         <FontAwesomeIcon icon="envelope" color="black" />
         <span className={'button-text'}>{t('subscribe')}</span>
       </Button>
+      </Tooltip>
 
-      <Button key={uniqId()} className={'footer-button-subscribe'} onClick={props.handleCancel}>
+      <Button className={'footer-button-subscribe'} onClick={props.handleCancel}>
         <FontAwesomeIcon icon="ban" color="black" />
         <span className={'button-text'}>{t('modal.locate.close')}</span>
       </Button>
