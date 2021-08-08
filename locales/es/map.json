@@ -355,6 +355,8 @@
   "burgerMenu": {
     "home": "Inicio",
     "join": "Unirse",
+    "search_db": "Búsqueda de base de datos",
+    "docs": "Documentación",
     "loginForPilots": "Iniciar sesión para pilotos",
     "contact": "Contacto",
     "aboutUs": "Sobre nosotros",

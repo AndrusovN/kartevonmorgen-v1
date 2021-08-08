@@ -38,10 +38,10 @@ function HeaderCardContainer() {
                       })
                   }} />
 
-      <HeaderCard title={'Лидерам изменений'} link={'/test.pdf'}
+      <HeaderCard title={'Лидерам изменений'} link={'co-map/co-map.ru для лидеров изменений.pdf'}
                   text={'Продвигайте свои проекты среди ответственной релеувантной аудитории'} onClick={() => {}} />
 
-      <HeaderCard title={'Партнерам'} link={'/test.pdf'}
+      <HeaderCard title={'Партнерам'} link={'co-map/co-map.ru для профессионалов.pdf'}
                   text={'Изучайте и поддерживайте социальные инициативы'} onClick={() => {}} />
     </div>
   )

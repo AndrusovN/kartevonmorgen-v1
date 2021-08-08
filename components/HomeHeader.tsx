@@ -58,7 +58,7 @@ const HomeHeader: FC = () => {
             <Menu.Item><Link href={'/login'}>{t('landingPage.menu.login')}</Link></Menu.Item>
             <Menu.SubMenu
               icon={<GlobalOutlined/>}
-              title="Language"
+              title={t('landingPage.Language')}
             >
               {
                 locales.map(locale => (

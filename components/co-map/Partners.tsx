@@ -9,14 +9,14 @@ require('../../styles/globals.less')
 const Partners: FC = () => {
   return (
     <div className={'partners_main_block'}>
-      <h1 className={"co_map_title"}>
+      <h1 className={'co_map_title'}>
         Партнёры
       </h1>
       <div className={'partners_container'}>
         {data.map(p => {
           return <div>
             <Link href={p.siteURL}>
-              <a>
+              <a target='_blank'>
                 <Image
                   width={p.w}
                   height={p.h}
@@ -29,9 +29,12 @@ const Partners: FC = () => {
         })}
       </div>
       <Button>
-        <p>
-          Стать партнёром
-        </p>
+        <a target={'_blank'}
+           href={'/co-map/co-map.ru%20для%20профессионалов.pdf'}>
+          <p>
+            Стать партнёром
+          </p>
+        </a>
       </Button>
     </div>
   )

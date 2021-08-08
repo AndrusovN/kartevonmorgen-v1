@@ -8,7 +8,7 @@ import { createSlugPathFromQueryAndRemoveSlug, getRootSlugActionFromQuery } from
 import { PluralRootSlugEntity, RootSlugEntity, SlugVerb } from '../utils/types'
 
 
-const onAddEntity = (router: NextRouter) => () => {
+export const onAddEntity = (router: NextRouter) => () => {
   const { query } = router
 
   // be sure the state is not in the edit or create mode

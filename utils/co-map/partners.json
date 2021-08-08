@@ -3,7 +3,7 @@
     "imageURL": "/assets/img/partners_co_map/AIESEC-New-Logo1.png",
     "siteURL": "https://aiesec.ru/",
     "w": "120",
-    "h": "15",
+    "h": "0",
     "alt": "AIESEC"
   },
   {
@@ -19,6 +19,13 @@
     "w": "180",
     "h": "70",
     "alt": "Gladway"
+  },
+  {
+    "imageURL": "/assets/img/partners_co_map/kvm_logo.png",
+    "siteURL": "https://kartevonmorgen.org",
+    "w": "180",
+    "h": "70",
+    "alt": "Kartevonmorgen"
   },
   {
     "imageURL": "/assets/img/partners_co_map/big-catalog-16212842451.png",
@@ -38,7 +45,7 @@
     "imageURL": "/assets/img/partners_co_map/weChange.png",
     "siteURL": "https://wechange.de/",
     "w": "140",
-    "h": "10",
+    "h": "0",
     "alt": "weChange"
   }
 ]

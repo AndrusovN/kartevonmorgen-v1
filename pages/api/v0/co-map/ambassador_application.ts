@@ -5,7 +5,7 @@ import AmbassadorFormType from '../../../../components/co-map/AmbassadorForm'
 
 const exec = util.promisify(child_process.exec)
 const script_path = "scripts/python/email_sender.py"
-const python_path = "scripts/python/venv/Scripts/python.exe"
+const python_path = "scripts/python/venv/bin/python3"
 const email_receiver = "andrusov.n@gmail.com"
 
 export default (req: NextApiRequest, res: NextApiResponse) => {

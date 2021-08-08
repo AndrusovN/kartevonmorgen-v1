@@ -18,15 +18,15 @@ export interface Type {
 export const types: Type[] = [
   {
     id: Category.INITIATIVE,
-    name: 'initiative',
+    name: 'Инициатива',
   },
   {
     id: Category.COMPANY,
-    name: 'company',
+    name: 'Предприятие',
   },
   {
     id: Category.EVENT,
-    name: 'event',
+    name: 'Событие',
   },
 ]
 

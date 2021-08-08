@@ -47,21 +47,25 @@ const Menu: FC = () => {
               }}
             >
               <Row
-                justify="space-between"
+                style={{display: "flex", flexDirection: "row"}}
+                justify='space-between'
+                className={"burger-menu-item"}
                 // gutter={[32, 4]}
               >
-                <Col>
+                <Col style={{flex: "1"}}>
                   <Link
+                    className={'burger_item'}
                     href={linkWithIcon.link}
                     target={LinkPolicyToTargetAttributeMapper[linkWithIcon.policy]}
-                    rel="noopener noreferrer"
+                    rel='noopener noreferrer'
+                    style={{width: "100%"}}
                   >
                     {t(`burgerMenu.${linkWithIcon.title}`)}
                   </Link>
                 </Col>
 
                 <Col>
-                  <FontAwesomeIcon icon={linkWithIcon.icon}/>
+                  <FontAwesomeIcon icon={linkWithIcon.icon} />
                 </Col>
               </Row>
             </AntMenu.Item>
@@ -74,8 +78,9 @@ const Menu: FC = () => {
         {
           locales.map(locale => (
             <Button
+              className={"btn_locale"}
               key={`locale-${locale}`}
-              type="link"
+              type='link'
               onClick={() => changeLocale(locale, router)}
             >
               {locale}
@@ -84,6 +89,7 @@ const Menu: FC = () => {
         }
       </Space>
     </AntMenu>
+
   )
 }
 
@@ -91,12 +97,12 @@ const BurgerMenu: FC = () => {
 
   return (
     <Dropdown
-      overlay={<Menu/>}
-      placement="bottomRight"
+      overlay={<Menu />}
+      placement='bottomRight'
     >
       <Button
         block
-        icon={<BurgerMenuIcon/>}
+        icon={<BurgerMenuIcon />}
         style={{
           boxShadow: 'rgba(0, 0, 0, 0.5) 0px 1px 3px 0.2px',
           height: 37,
