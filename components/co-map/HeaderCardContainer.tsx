@@ -2,7 +2,6 @@ import React from 'react'
 import { Button } from 'antd'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
-import { getElementById } from 'domutils'
 
 
 function HeaderCardContainer() {

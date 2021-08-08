@@ -1,7 +1,6 @@
 import { FC, useEffect, useState } from 'react'
 import { Carousel } from 'antd'
 import { AxiosInstance } from '../../api'
-import { BASICS_ENDPOINTS } from '../../api/endpoints/BasicsEndpoints'
 import { Card } from './Сard'
 
 type CardType = {
@@ -13,25 +12,25 @@ type CardType = {
 }
 
 
-const Slider: FC<{API_URL: string}> = (props: {API_URL: string}) => {
+const Slider: FC<{ API_URL: string }> = (props: { API_URL: string }) => {
 
   const API_URL = props.API_URL
 
   const [card, setCard] = useState([] as CardType[])
 
-  useEffect( () => {
-     AxiosInstance.GetRequest(API_URL).then(res => {
-       console.log(res.data)
-       // @ts-ignore
-       setCard(res.data)
-     })
+  useEffect(() => {
+    AxiosInstance.GetRequest(API_URL).then(res => {
+      console.log(res.data)
+      // @ts-ignore
+      setCard(res.data)
+    })
   }, [])
 
   console.log(card)
 
   return (
     <div className='carousel'>
-      <Carousel dots={{className: 'dots'}} autoplay>
+      <Carousel dots={{ className: 'dots' }} autoplay>
         {
           card.map((m, i) => <Card
             key={i}

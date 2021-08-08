@@ -1,15 +1,23 @@
-import React, { FC } from 'react'
-import { Col, Input, Layout, Row, Typography } from 'antd'
-import { SearchOutlined } from '@ant-design/icons'
+import React, { FC, MouseEvent } from 'react'
+import { Col, Layout, Row, Typography } from 'antd'
+import { NextRouter, useRouter } from 'next/router'
+import HomeCitySearchCoMap from './HomeCitySearchCoMap'
 
 
 const { Content } = Layout
 const { Title } = Typography
 
+const openMapByClickingOnTheBackground = (router: NextRouter) => (e: MouseEvent<HTMLDivElement>) => {
+  if (e.currentTarget === e.target) {
+    router.push('/maps/main')
+  }
+}
+
 const MapBannerCoMap: FC = () => {
+  const router = useRouter()
   return (<Content>
       <div
-        id="main-cover"
+        id='main-cover'
         style={{
           height: 'calc(100vh - 68px)',
           width: '100%',
@@ -17,7 +25,9 @@ const MapBannerCoMap: FC = () => {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
+          cursor: 'pointer',
         }}
+        onClick={openMapByClickingOnTheBackground(router)}
       >
         <Row style={{ marginBottom: '100px' }}>
           <Col xs={24} style={{ textAlign: 'center' }}>
@@ -42,12 +52,13 @@ const MapBannerCoMap: FC = () => {
 
           </Col>
           <Col xs={24} style={{ textAlign: 'center' }}>
-            <Input
-              style={{ width: '250px', padding: '8px' }}
-              placeholder="инклюзивная мастерская"
-              prefix={<SearchOutlined/>}
-              className="site-form-item-icon"
-            />
+            {/*<Input*/}
+            {/*  style={{ width: '250px', padding: '8px' }}*/}
+            {/*  placeholder='инклюзивная мастерская'*/}
+            {/*  prefix={<SearchOutlined />}*/}
+            {/*  className='site-form-item-icon'*/}
+            {/*/>*/}
+            <HomeCitySearchCoMap />
           </Col>
         </Row>
       </div>
