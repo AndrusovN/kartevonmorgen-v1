@@ -62,7 +62,8 @@ const Menu: FC = () => {
 
                 <Col>
                   <FontAwesomeIcon icon={linkWithIcon.icon}/>
-                </Col>
+                </Col>6
+                3
               </Row>
             </AntMenu.Item>
           ),
