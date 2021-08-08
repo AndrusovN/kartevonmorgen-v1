@@ -11,20 +11,23 @@ const HomeHeader = () => {
         boxShadow: '0 2px 8px #f0f1f2',
         backgroundColor: 'white',
         height: 68,
+        width: '100vw',
+        padding: 0,
+        display: "flex",
+        flexDirection: "row"
       }}
     >
       <Row
         justify="space-between"
+        style={{height: '100%'}}
       >
-        <Col
-          xs={2}
-          sm={4}
-        >
           <div
             style={{
               display: 'flex',
               alignItems: 'center',
-              height: '100%',
+              width: '10em',
+              height: '68px',
+              marginRight: '20px'
             }}
           >
             <Link href={'/'}><Image
@@ -36,16 +39,12 @@ const HomeHeader = () => {
             /></Link>
 
           </div>
-        </Col>
-
-        <Col>
           <Menu
             mode="horizontal"
           >
             <Menu.Item><Link href={'/maps/main'}>Карта</Link></Menu.Item>
             <Menu.Item><Link href={'/ambassadors'}>Амбассадорам</Link></Menu.Item>
           </Menu>
-        </Col>
       </Row>
     </Header>
   )
