@@ -26,6 +26,7 @@ const MapBannerCoMap: FC = () => {
           justifyContent: 'center',
           alignItems: 'center',
           cursor: 'pointer',
+          background: `url(/assets/img/co-map/MoscowBackground.png) no-repeat`
         }}
         onClick={openMapByClickingOnTheBackground(router)}
       >
