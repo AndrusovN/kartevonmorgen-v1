@@ -1,10 +1,9 @@
-import { FC, useState } from 'react'
-import Image from 'next/image'
+import { FC } from 'react'
 import { NextRouter, useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
 import produce from 'immer'
 import toString from 'lodash/toString'
-import L, { Icon, LatLng, latLng, Point } from 'leaflet'
+import L, { LatLng, latLng } from 'leaflet'
 import { MapContainer, Marker, TileLayer, ZoomControl } from 'react-leaflet'
 import { RootState } from '../slices'
 import searchResultSelector from '../selectors/searchResults'
@@ -21,25 +20,23 @@ import AddEntryButton from './AddEntryButton'
 import BurgerMenu from './BurgerMenu'
 import MapQueryParamsListener from './MapQueryParamsListener'
 import LocateMe from './LocateMe'
-import '../styles/globals.less'
 import { renderToString } from 'react-dom/server'
-//
-// const iconLinksByTag = {
-//   ecology: 'https://blog.vonmorgen.org/wp-content/uploads/2021/08/fairer-Handel-neu.svg',
-//   education: 'https://blog.vonmorgen.org/wp-content/uploads/2021/08/Bildung-und-Beratung-neu.svg',
-//   social: 'https://blog.vonmorgen.org/wp-content/uploads/2021/08/Kultur-und-Begegnung-neu.svg',
-//   culture: 'https://blog.vonmorgen.org/wp-content/uploads/2021/08/secondhandverleihen-verschenken-neu.svg',
-//   infrastructure: 'https://blog.vonmorgen.org/wp-content/uploads/2021/08/Initiativen-Netzwerke-neu.svg',
-//   communities: 'https://blog.vonmorgen.org/wp-content/uploads/2021/08/Gemeinschaftsgarten-neu.svg'
-// }
+import '../styles/globals.less'
 
+// ! these icons were uploaded to hosting because local imports don't work
 const iconLinksByTag = {
-  nachbar: 'https://blog.vonmorgen.org/wp-content/uploads/2021/08/fairer-Handel-neu.svg',
-  sozial: 'https://blog.vonmorgen.org/wp-content/uploads/2021/08/Bildung-und-Beratung-neu.svg',
-  fahrradverleih: 'https://blog.vonmorgen.org/wp-content/uploads/2021/08/Kultur-und-Begegnung-neu.svg',
-  exkursionen: 'https://blog.vonmorgen.org/wp-content/uploads/2021/08/secondhandverleihen-verschenken-neu.svg',
-  bio: 'https://blog.vonmorgen.org/wp-content/uploads/2021/08/Initiativen-Netzwerke-neu.svg',
-  umweltbildung: 'https://blog.vonmorgen.org/wp-content/uploads/2021/08/Gemeinschaftsgarten-neu.svg'
+  analyse: 'https://svgshare.com/i/Zxm.svg',
+  refill: 'https://svgshare.com/i/Zxx.svg',
+  wandel: 'https://svgshare.com/i/ZxT.svg',
+  pflege: 'https://svgshare.com/i/Zvs.svg',
+  ecodesign: 'https://svgshare.com/i/Zy8.svg',
+  selbstgeführt: 'https://svgshare.com/i/Zwo.svg'
+  // ecology: 'https://svgshare.com/i/Zxm.svg',
+  // education: 'https://svgshare.com/i/Zxx.svg',
+  // health: 'https://svgshare.com/i/ZxT.svg',
+  // culture: 'https://svgshare.com/i/Zvs.svg',
+  // infrastructure: 'https://svgshare.com/i/Zy8.svg',
+  // communities: 'https://svgshare.com/i/Zwo.svg'
 }
 
 const icons = {
@@ -49,24 +46,25 @@ const icons = {
   [Category.UNKNOWN]: 'unknown',
 }
 
-
-
 // memoize icons to prevent object creations
 const getIcon = (types: Categories, tags?: any) => {
 
   // the reason we define types as array is because backend sends us an array of categories
   // and we won't ever know if in the feature we'll need to use the whole array or not
   const typeId = types[0]
-  const iconUrl = iconLinksByTag[Object.keys(iconLinksByTag).find((el: string) => tags.some((e: string)=> e === el))]
+  const iconUrl = iconLinksByTag[Object.keys(iconLinksByTag).find((el: string) => tags?.some((e: string)=> e === el))]
   const typeName = CategoryToNameMapper[typeId]
+  const pinUrl = `/projects/main/pins/balloon_${typeName}.svg`
 
+  const htmlIconString = <div className='map-pin-container'>
+    <img src={`/projects/main/pins/balloon_${typeName}.svg`} className='pin' width={70} height={70} />
+    <img src={iconUrl ?? 'none'} className='tag-icon' width={iconUrl ? 15 : 0} height={iconUrl ? 15 : 0} />
+  </div>
+  console.log('htmlIconString', renderToString(htmlIconString))
   return L.divIcon({
-    className: '',
+    className: 'tag-icon',
     iconSize: iconUrl ? [70, 70] : [0, 0],
-    html: renderToString(<div className='map-pin-container'>
-            <img className='pin' src={`/projects/main/pins/balloon_${typeName}.svg`} />
-            <img className='tag-icon' src={iconUrl}  />
-          </div>),
+    html: renderToString(htmlIconString),
   });
 }
 
