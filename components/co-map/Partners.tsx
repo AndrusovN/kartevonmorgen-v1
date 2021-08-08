@@ -16,7 +16,7 @@ const Partners: FC = () => {
         {data.map(p => {
           return <div>
             <Link href={p.siteURL}>
-              <a>
+              <a target="_blank">
                 <Image
                   width={p.w}
                   height={p.h}
