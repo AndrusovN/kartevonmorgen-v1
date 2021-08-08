@@ -1,12 +1,11 @@
 @import 'co_map';
 
-
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,'Open Sans', sans-serif, sans-serif;
+  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, 'Open Sans', sans-serif, sans-serif;
   height: 100%;
 }
 
@@ -164,6 +163,7 @@ a {
   z-index: 400;
   transition: all 1s ease-in-out;
 }
+
 .map-bottom-right-open {
   bottom: 280px;
 }
@@ -204,6 +204,7 @@ a {
   height: 84pt;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000',endColorstr='#D9F0F3' , GradientType=0);
 }
+
 .img-mobile-testing {
   background-color: #fff;
 }
@@ -229,7 +230,8 @@ a {
     padding-bottom: 25px;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    div{
+
+    div {
       margin-top: 20px;
       margin-right: 20px;
     }
@@ -260,7 +262,7 @@ a {
 
 // style of container ShareEntryButton component
 
-#map-bottom-share{
+#map-bottom-share {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -273,23 +275,24 @@ a {
 
 // styles for ShareEntryButton component
 
-#share-entry-button{
+#share-entry-button {
   display: flex;
   flex-direction: column;
-  margin-bottom:10px;
+  margin-bottom: 10px;
 
-  .dropdown-container{
+  .dropdown-container {
     display: flex;
-    flex-direction:column;
-    align-items:flex-start;
+    flex-direction: column;
+    align-items: flex-start;
 
-    .dropdown-button{
+    .dropdown-button {
       transition: all 0.3s ease-out;
       color: black;
       overflow: hidden;
-      border-radius:7px;
+      border-radius: 7px;
       padding: 0 7px 0 7px;
-      .text-container{
+
+      .text-container {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -298,7 +301,8 @@ a {
 
     }
   }
-  .main-button{
+
+  .main-button {
     width: 140px;
     height: 40px;
     color: black;
@@ -313,11 +317,12 @@ a {
   position: absolute;
   z-index: 1000;
   pointer-events: none;
-  bottom:20px;
+  bottom: 20px;
   transform: translateY(-50%); /* using the CSS3 Transform technique */
   padding-top: 10px;
   transition: all 1s ease-in-out;
 }
+
 .leaflet-verticalcenter .leaflet-control {
   margin-bottom: 10px;
   transition: all 1s ease-in-out;
@@ -325,59 +330,67 @@ a {
 
 // styles for Modal component
 
-.modal-footer-embed{
-  width:100%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
+.modal-footer-embed {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-  .footer-button-embed{
-    display:flex;
-    align-items:center;
-    font-size:17px;
+  .footer-button-embed {
+    display: flex;
+    align-items: center;
+    font-size: 17px;
   }
-  .button-text{
+
+  .button-text {
     margin-left: 10px;
   }
 }
 
-.modal-subscribe{
-  .checkbox-container{
-    display:flex;
-    flex-direction:column;
-    align-items:flex-start;
-    justify-content:space-between;
+.modal-subscribe {
+  .checkbox-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
   }
-  .input-container{
+
+  .input-container {
     display: flex;
     flex-direction: column;
     margin-top: 10px;
-    .text{
+
+    .text {
       font-size: 15px;
       margin-bottom: 10px;
       font-weight: bolder;
     }
-    .text-margin{
-      margin-top:10px;
-      margin-bottom:10px;
+
+    .text-margin {
+      margin-top: 10px;
+      margin-bottom: 10px;
       font-weight: bolder;
       font-size: 15px;
     }
-    .input{
+
+    .input {
       outline: none;
       padding: 3px 10px 3px 10px;
       font-size: 20px;
       margin-bottom: 10px;
       border: 1px solid #d9d9d9;
     }
-    .error{
+
+    .error {
       border: 1px solid red;
     }
-    .error-text{
-      color:red;
+
+    .error-text {
+      color: red;
       font-size: 14px;
     }
-    .select{
+
+    .select {
       outline: none;
       padding: 4px 10px 4px 10px;
       color: rgba(0, 0, 0, 0.85);
@@ -387,18 +400,20 @@ a {
     }
   }
 }
-.modal-footer-subscribe{
-  width:100%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
 
-  .footer-button-subscribe{
-    display:flex;
+.modal-footer-subscribe {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .footer-button-subscribe {
+    display: flex;
     justify-content: center;
-    align-items:center;
-    font-size:17px;
-    .button-text{
+    align-items: center;
+    font-size: 17px;
+
+    .button-text {
       margin-left: 10px;
     }
   }
@@ -444,12 +459,15 @@ a {
   z-index: 1000;
   margin-bottom: 10px;
 }
+
 .option-input:hover {
   background: #ffffff;
 }
+
 .option-input:checked {
   background: #ffffff;
 }
+
 .option-input:checked::before {
   height: 30px;
   width: 30px;
@@ -460,6 +478,7 @@ a {
   text-align: center;
   line-height: 22px;
 }
+
 .option-input:checked::after {
   -webkit-animation: click-wave 0.65s;
   -moz-animation: click-wave 0.65s;
@@ -470,15 +489,26 @@ a {
   position: relative;
   z-index: 100;
 }
+
 .option-input.radio {
   border-radius: 50%;
 }
+
 .option-input.radio::after {
   border-radius: 50%;
 }
-.label-flex{
+
+.label-flex {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+///////// Burger
+.burger_item {
+  color: #000000;
+
+  &:hover {
+    color: #1890ff;
+  }
+}
