@@ -10,7 +10,7 @@ const MappingInstructions: FC = () => {
       <div className='instructions__container container'>
         <section>
           <h1 className='co_map_largetext'>Инструкции по картированию</h1>
-          <p className='co_map_mediumtext'><Link href={'/maps/main'}>Co-map.ru</Link> - это платформа вроде Википедии,
+          <p className='co_map_mediumtext'><Link href={'/maps/main'}>co-map.ru</Link> - это платформа вроде Википедии,
             информацию на который могут
             редактировать и улучшать совместно
             все пользователи во всем мире . Контент структурирован с использованием ключевых слов (#хэштегов). То есть
@@ -44,7 +44,7 @@ const MappingInstructions: FC = () => {
                 className='instructions__img-map2'
               />
               <li>Найдите город, в который вы хотите добавить проекты и события на <Link
-                href={'/maps/main'}>Co-map.ru</Link></li>
+                href={'/maps/main'}>co-map.ru</Link></li>
               <li>Используйте функцию поиска, чтобы убедиться, что запись еще не существует.</li>
               <li>Нажмите на знак “+” справа внизу страницы..</li>
               <li>Заполните форму ввода максимально кратко и логично. С ключевыми словами подумайте, какие термины можно
