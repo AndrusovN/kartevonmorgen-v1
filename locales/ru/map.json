@@ -47,12 +47,12 @@
     "requiredField": "Обязательное поле",
     "titleTooLong": "Заголовок слишком длинный",
     "titleTooShort": "Слишком короткое название",
-    "maxNumCharactersTitle": "из макс. 50 символов",
+    "maxNumCharactersTitle": "из макс.\n50 символов",
     "minNumCharactersTitle": "символов, минимум: 3",
     "invalidValues": "Недействительные значения",
     "descriptionTooLong": "Описание слишком длинное",
     "descriptionTooShort": "Описание слишком короткое",
-    "maxNumCharactersDescription": "из макс. 250 знаков",
+    "maxNumCharactersDescription": "из макс.\n250 знаков",
     "minNumCharactersDescription": "символов, минимум: 10",
     "invalidLatitude": "Неверная широта",
     "invalidLongitude": "Неверная долгота",
@@ -356,9 +356,11 @@
   "burgerMenu": {
     "home": "Домашняя страница",
     "join": "Присоединиться",
+    "docs": "Руководство пользования",
     "loginForPilots": "Войти",
-    "contact": "Контакт",
+    "search_db": "Поиск по базе данных",
+    "contact": "Контакты",
     "aboutUs": "О проекте",
-    "privacy": "Конфиденциальность"
+    "privacy": "Политика конфиденциальности"
   }
 }

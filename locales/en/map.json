@@ -356,6 +356,8 @@
   "burgerMenu": {
     "home": "Home",
     "join": "Join",
+    "docs": "Documentation",
+    "search_db": "Search in database",
     "loginForPilots": "Login",
     "contact": "Contact",
     "aboutUs": "About",

@@ -147,12 +147,14 @@ const TagsSelect: FC<any> = (props) => {
     // Go for each tag in allTags
     // matchedTagsWithFrequency - list of objects like {tag: string, frequency: number}
     // we need only tag from this
-    matchedTagsWithFrequency.forEach(tagFr => {
-      let tag = tagFr.tag
-      if (selectedTags.includes(tag) || tag == value) {
-        newSelectedTags.push(tag)
-      }
+    if (selectedTags.includes(value)) {
+      return
+    }
+
+    selectedTags.forEach(tag => {
+      newSelectedTags.push(tag)
     })
+    newSelectedTags.push(value)
 
     setSelectedTags(newSelectedTags)
     setTagsCallback(newSelectedTags)

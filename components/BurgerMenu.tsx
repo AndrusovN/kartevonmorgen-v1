@@ -47,15 +47,18 @@ const Menu: FC = () => {
               }}
             >
               <Row
+                style={{display: "flex", flexDirection: "row"}}
                 justify='space-between'
+                className={"burger-menu-item"}
                 // gutter={[32, 4]}
               >
-                <Col>
+                <Col style={{flex: "1"}}>
                   <Link
                     className={'burger_item'}
                     href={linkWithIcon.link}
                     target={LinkPolicyToTargetAttributeMapper[linkWithIcon.policy]}
                     rel='noopener noreferrer'
+                    style={{width: "100%"}}
                   >
                     {t(`burgerMenu.${linkWithIcon.title}`)}
                   </Link>
@@ -75,6 +78,7 @@ const Menu: FC = () => {
         {
           locales.map(locale => (
             <Button
+              className={"btn_locale"}
               key={`locale-${locale}`}
               type='link'
               onClick={() => changeLocale(locale, router)}
@@ -85,6 +89,7 @@ const Menu: FC = () => {
         }
       </Space>
     </AntMenu>
+
   )
 }
 
