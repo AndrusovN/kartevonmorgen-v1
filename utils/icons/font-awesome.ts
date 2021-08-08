@@ -24,7 +24,8 @@ import {
   faCode,
   faBan,
   faCopy,
-  faTimesCircle
+  faTimesCircle,
+  faInfoCircle
 } from '@fortawesome/free-solid-svg-icons'
 
 import {
@@ -68,7 +69,8 @@ library.add(
   faBan,
   faCopy,
   faEnvelope,
-  faTimesCircle
+  faTimesCircle,
+  faInfoCircle
 )
 
 // free-brands-svg-icons

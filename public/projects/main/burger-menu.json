@@ -6,14 +6,14 @@
     "policy": "self"
   },
   {
-    "link": "https://co-map.ru/docs/",
-    "title": "join",
-    "icon": "user-friends",
+    "link": "https://co-map.ru/mappinginstructions/",
+    "title": "docs",
+    "icon": "info-circle",
     "policy": "newTab"
   },
   {
     "link": "https://openfairdb.org/",
-    "title": "loginForPilots",
+    "title": "search_db",
     "icon": "columns",
     "policy": "newTab"
   },
@@ -21,12 +21,6 @@
     "link": "https://co-map.ru/",
     "title": "contact",
     "icon": "headset",
-    "policy": "newTab"
-  },
-  {
-    "link": "https://co-map.ru/",
-    "title": "aboutUs",
-    "icon": "users",
     "policy": "newTab"
   },
   {

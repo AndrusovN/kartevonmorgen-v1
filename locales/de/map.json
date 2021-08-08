@@ -373,6 +373,8 @@
   "burgerMenu": {
     "home": "Startseite",
     "join": "Mitmachen",
+    "docs": "Dokumentation",
+    "search_db": "Datenbank-Suche",
     "loginForPilots": "Login für Piloten",
     "contact": "Kontakt",
     "aboutUs": "Über uns",

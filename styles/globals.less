@@ -244,7 +244,7 @@ a {
     transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 
     a {
-      p{
+      p {
         margin-top: -2px;
         font-weight: 650;
       }
@@ -269,8 +269,24 @@ a {
   position: absolute;
   z-index: 400;
 }
-
 // styles for ShareEntryButton component
+
+.burger_item {
+  color: black !important;
+}
+
+.btn_locale {
+  color: black !important;
+}
+
+.btn_locale:hover {
+  color: #1890FF !important;
+}
+
+.burger_item:hover {
+  color: #1890FF !important;
+}
+
 
 #share-entry-button {
   display: flex;
@@ -500,11 +516,20 @@ a {
   justify-content: center;
 }
 
-///////// Burger
-.burger_item {
-  color: #000000;
-
-  &:hover {
-    color: #1890ff;
+.map-banner {
+  height: calc(100vh - 68px);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-Items: center;
+  cursor: pointer;
+  background-image: url(/co-map/map.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  @media screen and (max-width: 600px){
+    width: 120%;
+  }
+  @media screen and (max-width: 700px){
+    background-image: url(/co-map/smallMap.png);
   }
 }

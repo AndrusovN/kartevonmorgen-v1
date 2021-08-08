@@ -9,7 +9,7 @@ import { PluralRootSlugEntity, RootSlugEntity, SlugVerb } from '../utils/types'
 import useTranslation from 'next-translate/useTranslation'
 
 
-const onAddEntity = (router: NextRouter) => () => {
+export const onAddEntity = (router: NextRouter) => () => {
   const { query } = router
 
 
