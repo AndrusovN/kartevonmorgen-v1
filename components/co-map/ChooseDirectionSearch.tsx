@@ -24,25 +24,25 @@ function ChooseDirectionSearch() {
       <div className={'co_map_title'}>Выбрать направление поиска</div>
       <div className={'item-container'}>
         <ItemDirection link={'https://ssr.kartevonmorgen.org/'} text={'Сохранение окружающей среды'} onClick={() => {
-          redirectToCurrentTags(['environment']).then(r => console.log(r))
+          redirectToCurrentTags(['ecology']).then(r => console.log(r))
         }} />
         <ItemDirection link={'https://ssr.kartevonmorgen.org/'} text={'Забота о людях и их здоровье'} onClick={() => {
-          redirectToCurrentTags(['healthcare']).then(r => console.log(r))
+          redirectToCurrentTags(['social']).then(r => console.log(r))
         }} />
         <ItemDirection link={'https://ssr.kartevonmorgen.org/'} text={'Культура и креативные индустрии'}
                        onClick={() => {
-                         redirectToCurrentTags(['creativity']).then(r => console.log(r))
+                         redirectToCurrentTags(['culture']).then(r => console.log(r))
                        }} />
         <ItemDirection link={'https://ssr.kartevonmorgen.org/'} text={'Развитие сообществ и территорий'}
                        onClick={() => {
-                         redirectToCurrentTags(['society'])
+                         redirectToCurrentTags(['communities'])
                        }} />
         <ItemDirection link={'https://ssr.kartevonmorgen.org/'} text={'Образование и развитие человека'}
                        onClick={() => {
                          redirectToCurrentTags(['education'])
                        }} />
         <ItemDirection link={'https://ssr.kartevonmorgen.org/'} text={'Инфраструктура поддержки'} onClick={() => {
-          redirectToCurrentTags(['help'])
+          redirectToCurrentTags(['infrastructure'])
         }} />
       </div>
     </div>
