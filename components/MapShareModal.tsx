@@ -9,6 +9,7 @@ import SearchTags from './SearchTags'
 import { useMap } from 'react-leaflet'
 import { AxiosInstance } from '../api'
 import { BASICS_ENDPOINTS } from '../api/endpoints/BasicsEndpoints'
+import useTranslation from 'next-translate/useTranslation'
 
 const getIframeCode = (url) => {
   return (
@@ -34,11 +35,16 @@ const titleOptions = [
     value: 'all',
   },
 ]
+export enum MapModalMode {
+  SUBSCRIPTION="subscription",
+  EMBED="embed"
+}
+
 
 interface ModalComponentProps {
   isModalVisible: boolean
   setIsModalVisible: (value) => void
-  mode: string
+  mode: MapModalMode
 }
 
 export const ModalComponent:FC<ModalComponentProps> = (props) => {
@@ -55,10 +61,10 @@ export const ModalComponent:FC<ModalComponentProps> = (props) => {
 
   const chooseModal = (mode) => {
     switch (mode) {
-      case 'embed' : {
+      case MapModalMode.EMBED : {
         return <Embed handleOk={handleOk} handleCancel={handleCancel} isModalVisible={props.isModalVisible} />
       }
-      case 'subscribe' : {
+      case MapModalMode.SUBSCRIPTION: {
         return <Subscribe handleOk={handleOk} handleCancel={handleCancel} isModalVisible={props.isModalVisible}/>
       }
       default :
@@ -109,6 +115,8 @@ const Subscribe:FC<ModalVariationProps> = (props) => {
     errorMail: false,
     errorTags: false
   })
+  const { t } = useTranslation('map')
+
 
   const map = useMap()
   const bbox = convertBBoxToString(map.getBounds()).split(',')
@@ -217,6 +225,8 @@ interface FooterType {
 
 const FooterEmbed:FC<FooterType> = (props) => {
 
+  const { t } = useTranslation('map')
+
   const showNotification = () => {
     notification.open({
       message: 'IFrame copied to clipboard successfully!',
@@ -227,31 +237,34 @@ const FooterEmbed:FC<FooterType> = (props) => {
     <div className={'modal-footer-embed'} key={uniqId()}>
       <Button key={uniqId()} onClick={props.handleCancel} className={'footer-button-embed'}>
         <FontAwesomeIcon icon="ban" color="black" />
-        <span className={'button-text'}>Back</span>
+        <span className={'button-text'}>{t('modal.locate.close')}</span>
       </Button>
       <Button key={uniqId()} onClick={props.handleOk} href={'https://blog.vonmorgen.org/iframes/'}
               className={'footer-button-embed'}>
-        What to do about it
+        {t("modal.embed.findOutMore")}
       </Button>
       <CopyToClipboard text={getIframeCode(props.url)}>
         <Button key={uniqId()} className={'footer-button-embed'} onClick={() => {showNotification()}}>
           <FontAwesomeIcon icon="copy" color="black" />
-          <span className={'button-text'}>Copy</span>
+          <span className={'button-text'}>{t('copy')}</span>
         </Button>
       </CopyToClipboard>
     </div>)
 }
 const FooterSubscribe:FC<FooterType> = (props) => {
+
+  const { t } = useTranslation('map')
+
   return (
     <div className={'modal-footer-subscribe'} key={uniqId()}>
       <Button key={uniqId()} onClick={props.handleOk} className={'footer-button-subscribe'}>
         <FontAwesomeIcon icon="envelope" color="black" />
-        <span className={'button-text'}>Subscribe</span>
+        <span className={'button-text'}>{t('subscribe')}</span>
       </Button>
 
       <Button key={uniqId()} className={'footer-button-subscribe'} onClick={props.handleCancel}>
         <FontAwesomeIcon icon="ban" color="black" />
-        <span className={'button-text'}>Close</span>
+        <span className={'button-text'}>{t('modal.locate.close')}</span>
       </Button>
     </div>)
 }

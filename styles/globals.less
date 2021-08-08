@@ -240,21 +240,18 @@ a {
   Button {
     padding-bottom: 0;
     border: 2px solid #2D9BF0;
+    color: lighten(#2D9BF0, 10%);
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 
-    p {
-      padding: 0;
-      font-weight: 650;
-      margin: -3px 0 3px 0;
-      text-align: center;
-      color: lighten(#2D9BF0, 10%);
-      transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    a {
+      p{
+        margin-top: -2px;
+        font-weight: 650;
+      }
     }
 
     &:hover {
-      p {
-        color: #9f426f;
-      }
-
+      color: #9f426f;
       border: 2px solid #9ec143;
     }
   }

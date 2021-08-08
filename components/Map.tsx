@@ -21,8 +21,9 @@ import BurgerMenu from './BurgerMenu'
 import MapQueryParamsListener from './MapQueryParamsListener'
 import LocateMe from './LocateMe'
 import ShareEntryButton from './ShareEntryButton'
-import { ModalComponent } from './Modal'
+import { MapModalMode, ModalComponent } from './MapShareModal'
 import { MapCustomClassZoomControl } from './MapCustomClassZoomController'
+
 
 
 const icons = {
@@ -115,7 +116,7 @@ const Map: FC = () => {
   )
 
   // for only one create class for ZoomController otherwise, a lot of div's were created 0_0
-  const [createClass, setCreateClass] = useState<boolean>(false)
+  const [createClass,setCreateClass] = useState<boolean>(false)
 
   // trigger for drop-down button "Share"
   const [showButtons, setShowButtons] = useState<boolean>(false)
@@ -142,14 +143,13 @@ const Map: FC = () => {
 
       <SearchEventsListener />
 
-      <MapCustomClassZoomControl createClass={createClass} setCreateClass={setCreateClass} />
+      <MapCustomClassZoomControl createClass={createClass} setCreateClass={setCreateClass}/>
 
-      <ModalComponent isModalVisible={isModalVisibleEmbed} setIsModalVisible={setIsModalVisibleEmbed} mode={'embed'} />
+      <ModalComponent isModalVisible={isModalVisibleEmbed} setIsModalVisible={setIsModalVisibleEmbed} mode={MapModalMode.EMBED} />
 
-      <ModalComponent isModalVisible={isModalVisibleSubscribe} setIsModalVisible={setIsModalVisibleSubscribe}
-                      mode={'subscribe'} />
+      <ModalComponent isModalVisible={isModalVisibleSubscribe} setIsModalVisible={setIsModalVisibleSubscribe} mode={MapModalMode.SUBSCRIPTION} />
 
-      <div id='map-top-right'>
+      <div id="map-top-right">
         <BurgerMenu />
       </div>
 
@@ -158,19 +158,17 @@ const Map: FC = () => {
         <LocateMe />
       </div>
 
-      <div id='map-bottom-share'>
+      <div id="map-bottom-share">
         <ShareEntryButton showButton={showButtons} openHandler={setShowButtons}
                           embedHandler={() => setIsModalVisibleEmbed(true)}
-                          subscribeHandler={() => {
-                            setIsModalVisibleSubscribe(true)
-                          }} />
+                          subscribeHandler={() => {setIsModalVisibleSubscribe(true)}}/>
       </div>
 
-      <ZoomControl position={'bottomright'} />
+      <ZoomControl position={'verticalcenterright'} />
 
       <TileLayer
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
 
       {
