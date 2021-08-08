@@ -22,7 +22,7 @@ const WhyAmbassador = () => (
     </div>
   <div>
     <div className='co_map_title'>Этапы отбора</div>
-    <Image className='selection' src={'/../public/co-map/selection.svg'} layout='responsive' width={100} height={100}/>
+    <Image className='selection' src={'/co-map/selection.svg'} layout='responsive' width={100} height={100}/>
   </div>
   </div>
 )
