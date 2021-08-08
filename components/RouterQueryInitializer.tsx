@@ -82,13 +82,16 @@ const RouterQueryInitializer: FC<RouterQueryInitializerProps> = (props) => {
         isSidebarOpen,
       }
 
-      try {
-        const currentPosition: GeolocationPosition = await getCurrentPosition()
-        paramsToUpdate.lat = currentPosition.coords.latitude.toFixed(4)
-        paramsToUpdate.lng = currentPosition.coords.longitude.toFixed(4)
-      } catch (e) {
+      if (!latParam || !lngParam) {
+        try {
+          const currentPosition: GeolocationPosition = await getCurrentPosition()
+          paramsToUpdate.lat = currentPosition.coords.latitude.toFixed(4)
+          paramsToUpdate.lng = currentPosition.coords.longitude.toFixed(4)
+        } catch (e) {
 
+        }
       }
+
 
       // filter query params out of all params including the dynamic ones
       // if not removing slug from the query it will add it as a query param not a part of path

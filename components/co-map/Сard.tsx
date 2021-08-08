@@ -13,7 +13,7 @@ export const Card: FC<CardPropsType> = (props) => {
   return (
     <div className='card'>
       <div className='card__amb'>
-        <Image src={img} alt='photoAmb' width={350} height={450} layout="responsive"/>
+        <Image className='img' src={img} alt='photoAmb' width={350} height={450} layout="responsive"/>
       </div>
       <div className='card__about-block about'>
         <h2 className='co_map_title about__title'>{name}</h2>
