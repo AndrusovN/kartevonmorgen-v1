@@ -157,7 +157,7 @@ a {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  bottom: 120px;
+  bottom: 135px;
   margin-bottom: 8px;
   right: 10px;
   position: absolute;
@@ -266,7 +266,7 @@ a {
   align-items: flex-end;
   bottom: 10px;
   margin-bottom: 8px;
-  right: 55px;
+  right: 10px;
   position: absolute;
   z-index: 400;
 }
@@ -281,18 +281,21 @@ a {
   .dropdown-container{
     display: flex;
     flex-direction:column;
-    align-items:flex-end;
+    align-items:flex-start;
 
     .dropdown-button{
       transition: all 0.3s ease-out;
       color: black;
       overflow: hidden;
-      padding:0;
       border-radius:7px;
-
-      .text{
-        margin-left: 5px;
+      padding: 0 7px 0 7px;
+      .text-container{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
       }
+
+
     }
   }
   .main-button{
