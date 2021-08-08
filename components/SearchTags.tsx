@@ -84,20 +84,6 @@ export const SearchTags: FC<SearchTagsType> = ({ optionsCount = [],
 
   const router = useRouter()
 
-  const addTag = (value: string) => {
-    const newArr = optionsCount
-    newArr.push(value)
-    addOptionCount(newArr)
-  }
-  const deleteTag = (value: string) => {
-    const newArr = optionsCount.filter((el) => el !== value)
-    addOptionCount(newArr)
-  }
-  const clearAllTag = () => {
-    const newArr = []
-    addOptionCount(newArr)
-  }
-
   const resetTagsList = (tagsList: string[]) => {
     const { query } = router
     const newQueryParams = updateRoutingQuery(query, { tag: tagsList })
@@ -122,24 +108,7 @@ export const SearchTags: FC<SearchTagsType> = ({ optionsCount = [],
           }}
         >
           <TagsSelect
-
             setTagsCallback={resetTagsList}
-            //placeholder={t('searchbar.placeholder')}
-            /*onSelect={(value, option) => {
-              addTag(value)
-              searchTag(router)
-            }
-            }
-            onDeselect={(value, option) => {
-              deleteTag(value)
-              removeTagFromRouter(router)
-            }
-            }
-            onClear={() => {
-              clearAllTag()
-              removeAllTagsFromRouter(router)
-            }
-            }*/
           />
         </div>
       )}
