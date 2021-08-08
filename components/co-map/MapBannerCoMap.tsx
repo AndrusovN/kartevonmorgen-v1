@@ -1,4 +1,4 @@
-import React, { FC, MouseEvent } from 'react'
+import React, { FC, MouseEvent, useEffect, useState } from 'react'
 import { Col, Layout, Row, Typography } from 'antd'
 import { NextRouter, useRouter } from 'next/router'
 import HomeCitySearchCoMap from './HomeCitySearchCoMap'
@@ -14,21 +14,12 @@ const openMapByClickingOnTheBackground = (router: NextRouter) => (e: MouseEvent<
 }
 
 const MapBannerCoMap: FC = () => {
+
   const router = useRouter()
   return (<Content>
       <div
-        id='main-cover'
-        style={{
-          height: 'calc(100vh - 68px)',
-          width: '100%',
-          backgroundColor: 'indianRed',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          cursor: 'pointer',
-          background: `url(/assets/img/co-map/MoscowBackground.png) no-repeat`,
-          backgroundSize: '250%'
-        }}
+        // id='main-cover'
+        className={'map-banner'}
         onClick={openMapByClickingOnTheBackground(router)}
       >
         <Row style={{ marginBottom: '100px' }}>
@@ -54,12 +45,6 @@ const MapBannerCoMap: FC = () => {
 
           </Col>
           <Col xs={24} style={{ textAlign: 'center' }}>
-            {/*<Input*/}
-            {/*  style={{ width: '250px', padding: '8px' }}*/}
-            {/*  placeholder='инклюзивная мастерская'*/}
-            {/*  prefix={<SearchOutlined />}*/}
-            {/*  className='site-form-item-icon'*/}
-            {/*/>*/}
             <HomeCitySearchCoMap />
           </Col>
         </Row>
