@@ -240,21 +240,18 @@ a {
   Button {
     padding-bottom: 0;
     border: 2px solid #2D9BF0;
+    color: lighten(#2D9BF0, 10%);
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 
-    p {
-      padding: 0;
-      font-weight: 650;
-      margin: -3px 0 3px 0;
-      text-align: center;
-      color: lighten(#2D9BF0, 10%);
-      transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    a {
+      p {
+        margin-top: -2px;
+        font-weight: 650;
+      }
     }
 
     &:hover {
-      p {
-        color: #9f426f;
-      }
-
+      color: #9f426f;
       border: 2px solid #9ec143;
     }
   }
@@ -520,11 +517,20 @@ a {
   justify-content: center;
 }
 
-///////// Burger
-.burger_item {
-  color: #000000;
-
-  &:hover {
-    color: #1890ff;
+.map-banner {
+  height: calc(100vh - 68px);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-Items: center;
+  cursor: pointer;
+  background-image: url(/co-map/map.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  @media screen and (max-width: 600px){
+    width: 120%;
+  }
+  @media screen and (max-width: 700px){
+    background-image: url(/co-map/smallMap.png);
   }
 }
