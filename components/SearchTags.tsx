@@ -73,7 +73,8 @@ interface SearchTagsType {
   addOptionCount?: (value) => void
 }
 
-export const SearchTags: FC<SearchTagsType> = ({ optionsCount = [], addOptionCount }) => {
+export const SearchTags: FC<SearchTagsType> = ({ optionsCount = [],
+                                                 addOptionCount = (value: string) => {} }) => {
   // the ant select uses useLayout internally and we need to be sure it's mounted on the browser
   const [showSelect, setShowSelect] = useState<boolean>(false)
   const { t } = useTranslation('map')
@@ -96,6 +97,22 @@ export const SearchTags: FC<SearchTagsType> = ({ optionsCount = [], addOptionCou
     const newArr = []
     addOptionCount(newArr)
   }
+
+  const resetTagsList = (tagsList: string[]) => {
+    const { query } = router
+    const newQueryParams = updateRoutingQuery(query, { tag: tagsList })
+    const [newPath, newQueryWithoutSlug] = createSlugPathFromQueryAndRemoveSlug(newQueryParams)
+
+    router.replace(
+      {
+        pathname: `/maps/${newPath}`,
+        query: newQueryWithoutSlug,
+      },
+      undefined,
+      { shallow: true },
+    )
+  }
+
   return (
     <Fragment>
       {showSelect && (
@@ -105,8 +122,10 @@ export const SearchTags: FC<SearchTagsType> = ({ optionsCount = [], addOptionCou
           }}
         >
           <TagsSelect
-            placeholder={t('searchbar.placeholder')}
-            onSelect={(value, option) => {
+
+            setTagsCallback={resetTagsList}
+            //placeholder={t('searchbar.placeholder')}
+            /*onSelect={(value, option) => {
               addTag(value)
               searchTag(router)
             }
@@ -120,7 +139,7 @@ export const SearchTags: FC<SearchTagsType> = ({ optionsCount = [], addOptionCou
               clearAllTag()
               removeAllTagsFromRouter(router)
             }
-            }
+            }*/
           />
         </div>
       )}
