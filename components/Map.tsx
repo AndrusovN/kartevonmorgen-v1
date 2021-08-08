@@ -25,18 +25,12 @@ import '../styles/globals.less'
 
 // ! these icons were uploaded to hosting because local imports don't work
 const iconLinksByTag = {
-  analyse: 'https://svgshare.com/i/Zxm.svg',
-  refill: 'https://svgshare.com/i/Zxx.svg',
-  wandel: 'https://svgshare.com/i/ZxT.svg',
-  pflege: 'https://svgshare.com/i/Zvs.svg',
-  ecodesign: 'https://svgshare.com/i/Zy8.svg',
-  selbstgeführt: 'https://svgshare.com/i/Zwo.svg'
-  // ecology: 'https://svgshare.com/i/Zxm.svg',
-  // education: 'https://svgshare.com/i/Zxx.svg',
-  // health: 'https://svgshare.com/i/ZxT.svg',
-  // culture: 'https://svgshare.com/i/Zvs.svg',
-  // infrastructure: 'https://svgshare.com/i/Zy8.svg',
-  // communities: 'https://svgshare.com/i/Zwo.svg'
+  ecology: 'https://svgshare.com/i/Zxm.svg',
+  education: 'https://svgshare.com/i/Zxx.svg',
+  health: 'https://svgshare.com/i/ZxT.svg',
+  culture: 'https://svgshare.com/i/Zvs.svg',
+  infrastructure: 'https://svgshare.com/i/Zy8.svg',
+  communities: 'https://svgshare.com/i/Zwo.svg'
 }
 
 const icons = {
