@@ -178,10 +178,12 @@
     font-size: 36px;
     margin: 0;
   }
+
   &__subtitle {
     font-size: 28px;
     font-weight: normal;
   }
+
   &__place {
     font-size: 18px;
   }
@@ -238,7 +240,7 @@
     flex-direction: column;
     padding: 5px 0;
 
-    & > div{
+    & > div {
       padding: 10px 0;
     }
 
@@ -308,7 +310,7 @@
 }
 
 .selection {
-  width: 100%!important;
+  width: 100% !important;
 }
 
 
@@ -362,12 +364,15 @@
       }
 
     }
-    .item-direction:hover{
+
+    .item-direction:hover {
       box-shadow: 2px 3px black, -.4em 0 0.4em gray;
     }
+
     .item-direction:active {
       box-shadow: none;
     }
+
     @media (max-width: 1000px) {
       .item-direction {
         width: 40%;
@@ -389,7 +394,7 @@
   }
   @media (max-width: 400px) {
     .item-direction {
-      padding: 0 0 0 0 ;
+      padding: 0 0 0 0;
     }
   }
 
@@ -463,6 +468,7 @@
     border-radius: 10px;
   }
 }
+
 @media (max-width: 1000px) {
   #header-card {
     width: 35vw;
@@ -470,16 +476,19 @@
     margin: 10px 0 10px 0;
     padding: 15px 15px 10px 15px;
     border-radius: 40px;
+
     .title {
       font-size: 4vw;
       height: 15%;
     }
+
     .text {
       font-weight: 400;
       font-size: 3.4vw;
-      line-height:20px;
+      line-height: 20px;
       height: 60%;
     }
+
     .button {
       width: 90%;
       background: #414bb2;
@@ -490,12 +499,14 @@
     }
   }
 }
+
 @media (max-width: 400px) {
   #header-card {
     .title {
       font-size: 3.4vw;
       height: 15%;
     }
+
     .text {
       font-size: 3vw;
     }
@@ -507,7 +518,8 @@
     margin-left: 40px;
   }
 }
-@media (max-width: 600px) and (min-width: 530px){
+
+@media (max-width: 600px) and (min-width: 530px) {
   #header-card-container {
     margin-left: 55px;
   }
@@ -521,6 +533,12 @@
 
   h2 {
     padding-top: 20px;
+    color: #637984;
+    font-size: 28px;
+  }
+  h3 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 24px;
     color: #637984;
   }
 
@@ -586,5 +604,33 @@
     ol {
       list-style: none;
     }
+  }
+
+  &__char {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    &__char-img {
+      margin: 0!important;
+      max-width: 400px!important;
+      max-height: 250px!important;
+    }
+  }
+
+  &__eco {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.template {
+  h1 {
+    color: #AB366A;
+  }
+
+  a {
+    color: #AB366A;
+    white-space: nowrap;
   }
 }
