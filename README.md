@@ -80,7 +80,7 @@ pm2 start "yarn run start:production" --name kartevonmorgen
 - HOSTNAME: is the hostname interface e.g `localhost` or `0.0.0.0`
 - PORT: is the port to listen on
 
-## Ambassadors Platform
+## Platform
 - OS: Ubuntu 20.04.2 LTS
 - RAM: 2 GB
 - Storage: 20 GB NVMe

@@ -1,9 +1,9 @@
 [
   {
     "imageURL": "/assets/img/partners_co_map/AIESEC-New-Logo1.png",
-    "siteURL": "https://aiesec.org/",
+    "siteURL": "https://aiesec.ru/",
     "w": "120",
-    "h": "20",
+    "h": "15",
     "alt": "AIESEC"
   },
   {
@@ -38,7 +38,7 @@
     "imageURL": "/assets/img/partners_co_map/weChange.png",
     "siteURL": "https://wechange.de/",
     "w": "140",
-    "h": "15",
+    "h": "10",
     "alt": "weChange"
   }
 ]

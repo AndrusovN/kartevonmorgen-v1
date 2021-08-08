@@ -19,9 +19,12 @@ export const BASICS_ENDPOINTS = {
   getRegions: (group: string): string => `${SELF_API_URL}/dropdowns/${group}/regions`,
   postEntryRating: (): string => `${BASICS_API_URL}/ratings`,
   getTags: (): string => `${SELF_API_URL}/tags`,
+  postSubscribe: (): string => `${BASICS_API_URL}/subscribe`,
 
   co_map: {
     getAmbassadorCommunityParams: (): string => `${SELF_API_URL}/co-map/ambassador_community`,
-    postAmbassadorAssignment: (): string => `${SELF_API_URL}/co-map/ambassador_application`
+    postAmbassadorAssignment: (): string => `${SELF_API_URL}/co-map/ambassador_application`,
+    getAmbassadorCard: (): string => `${SELF_API_URL}/co-map/ambassador-card`,
+    getCollaborators: (): string => `${SELF_API_URL}/co-map/collaborators`
   }
 }

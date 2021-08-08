@@ -27,13 +27,14 @@ const HomeHeader = () => {
               height: '100%',
             }}
           >
-            <Image
+            <Link href={'/'}><Image
               src="/assets/img/Comap.jpg"
               alt="logo"
               layout="intrinsic"
               width={170}
               height={60}
-            />
+            /></Link>
+
           </div>
         </Col>
 
