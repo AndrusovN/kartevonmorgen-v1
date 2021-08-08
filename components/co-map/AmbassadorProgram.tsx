@@ -4,7 +4,11 @@ const redirectToForm = () => {
   if (process.browser) {
     let form = document.getElementById("ambassador_form")
     if (form) {
-      window.scrollTo({top: form.getBoundingClientRect().top, behavior: "smooth"})
+      window.scrollTo(
+        {
+          top: form.getBoundingClientRect().top - document.body.getBoundingClientRect().top,
+          behavior: "smooth"
+        })
     }
   }
 }

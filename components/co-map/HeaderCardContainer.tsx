@@ -7,24 +7,29 @@ import { getElementById } from 'domutils'
 
 function HeaderCardContainer() {
 
-  const scrollToMyRef = (ref) => {
-    window.scrollTo({top: ref, behavior: "smooth"})
+  const scrollToMyRef = () => {
+    let yToScroll = 0
+
+    if(process.browser) {
+      let howTo = document.getElementById("HowToUseMap")
+      if (howTo) {
+        yToScroll = howTo.getBoundingClientRect().top - document.body.getBoundingClientRect().top
+
+      }
+    }
+
+    console.log(yToScroll)
+
+    window.scrollTo({top: yToScroll, behavior: "smooth"})
   }
 
   const router = useRouter()
-  let yToScroll = 0
 
-  if(process.browser) {
-    let howTo = document.getElementById("HowToUseMap")
-    if (howTo) {
-      yToScroll = howTo.getBoundingClientRect().top
-    }
-  }
 
   return (
     <div id={'header-card-container'}>
       <HeaderCard title={'Каждому'} text={'Найдите места, где люди создают устойчивое будущее'}
-                  onClick={() => scrollToMyRef(yToScroll)} />
+                  onClick={scrollToMyRef} />
       <HeaderCard title={'Амбассадорам'}
                   text={'Станьте частью глобального движения в роли локального автора карты co-map.ru'}
                   onClick={() => {
