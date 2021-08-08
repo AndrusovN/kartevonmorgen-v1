@@ -29,6 +29,8 @@ const TagsSelect: FC<any> = (props) => {
     placeholder,
   } = props
 
+  let isFormPart = props.isFormPart ?? false
+
   let setTagsCallback = props.setTagsCallback
 
   if (!setTagsCallback) {
@@ -128,10 +130,11 @@ const TagsSelect: FC<any> = (props) => {
       }
     })
     setSelectedTags(newSelectedTags)
+    setTagsCallback(newSelectedTags)
   }
 
   // Renew selectedTags value on form data
-  setTagsCallback(selectedTags)
+
 
   // Event when some value is selected on input
   const onInputSelect = (value, option) => {
@@ -152,6 +155,7 @@ const TagsSelect: FC<any> = (props) => {
     })
 
     setSelectedTags(newSelectedTags)
+    setTagsCallback(newSelectedTags)
   }
 
   // Similar function on deselect
@@ -169,6 +173,7 @@ const TagsSelect: FC<any> = (props) => {
     onDeselectCallback(value, option)
 
     setSelectedTags(newSelectedTags)
+    setTagsCallback(newSelectedTags)
   }
 
   // clear all
@@ -176,7 +181,44 @@ const TagsSelect: FC<any> = (props) => {
     setTokenToMatchTagsWith('')
     onClearCallback()
     setSelectedTags([])
+    setTagsCallback(selectedTags)
   }
+
+  console.log("drawing tags select")
+
+  let selectElement = <Select
+    value={selectedTags}
+    mode="multiple"
+    allowClear
+    style={{ width: '100%' }}
+    placeholder={placeholder}
+    onSearch={(input) => {
+      setTokenToMatchTagsWith(input)
+      onSearchCallback(input)
+    }}
+    onSelect={(value, option) => {
+      onInputSelect(value, option)
+    }}
+    onDeselect={(value, option) => {
+      onInputDeselect(value, option)
+    }}
+    onClear={() => {
+      clear()
+    }}
+  >
+    {
+      matchedTagsWithFrequency && (
+        matchedTagsWithFrequency.map(tagWithFrequency => (
+          <Option
+            key={`tag-input-${tagWithFrequency.tag}`}
+            value={tagWithFrequency.tag}
+          >
+            {tagWithFrequency.tag}
+          </Option>
+        ))
+      )
+    }
+  </Select>
 
   return (
     <div>
@@ -187,43 +229,10 @@ const TagsSelect: FC<any> = (props) => {
         value={selectedTags}
       />
 
-      <Form.Item name="tags"
-                 validateStatus={'success'}>
+      {isFormPart ? <Form.Item name="tags"
+                               validateStatus={'success'}>{selectElement}
+      </Form.Item> : <div>{selectElement}</div>}
 
-        <Select
-          mode="multiple"
-          allowClear
-          style={{ width: '100%' }}
-          placeholder={placeholder}
-          onSearch={(input) => {
-            setTokenToMatchTagsWith(input)
-            onSearchCallback(input)
-          }}
-          onSelect={(value, option) => {
-            onInputSelect(value, option)
-          }}
-          onDeselect={(value, option) => {
-            onInputDeselect(value, option)
-          }}
-          onClear={() => {
-            clear()
-          }}
-        >
-          {
-            matchedTagsWithFrequency && (
-              matchedTagsWithFrequency.map(tagWithFrequency => (
-                <Option
-                  key={`tag-input-${tagWithFrequency.tag}`}
-                  value={tagWithFrequency.tag}
-                >
-                  {tagWithFrequency.tag}
-                </Option>
-              ))
-            )
-          }
-        </Select>
-
-      </Form.Item>
     </div>
   )
 }
