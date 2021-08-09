@@ -205,6 +205,21 @@ a {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000',endColorstr='#D9F0F3' , GradientType=0);
 }
 
+.map-pin-container {
+
+  & .pin {
+    position: relative;
+  }
+
+  & .tag-icon {
+    position: absolute;
+    top: 22px;
+    left: 22px;
+    width: 30px;
+    text-align: center;
+  }
+}
+
 .img-mobile-testing {
   background-color: #fff;
 }
@@ -269,8 +284,24 @@ a {
   position: absolute;
   z-index: 400;
 }
-
 // styles for ShareEntryButton component
+
+.burger_item {
+  color: black !important;
+}
+
+.btn_locale {
+  color: black !important;
+}
+
+.btn_locale:hover {
+  color: #1890FF !important;
+}
+
+.burger_item:hover {
+  color: #1890FF !important;
+}
+
 
 #share-entry-button {
   display: flex;
@@ -300,7 +331,6 @@ a {
   }
 
   .main-button {
-    width: 140px;
     height: 40px;
     color: black;
     font-size: 20px;

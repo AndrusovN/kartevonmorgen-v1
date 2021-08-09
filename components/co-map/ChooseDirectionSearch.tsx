@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import tagsDescriptions from '../../public/co-map/tag_descriptions'
 
 function ChooseDirectionSearch() {
 
@@ -23,27 +24,11 @@ function ChooseDirectionSearch() {
     <div id={'choose-direction-container'}>
       <div className={'co_map_title'}>Выбрать направление поиска</div>
       <div className={'item-container'}>
-        <ItemDirection link={'https://ssr.kartevonmorgen.org/'} text={'Сохранение окружающей среды'} onClick={() => {
-          redirectToCurrentTags(['ecology']).then(r => console.log(r))
-        }} />
-        <ItemDirection link={'https://ssr.kartevonmorgen.org/'} text={'Забота о людях и их здоровье'} onClick={() => {
-          redirectToCurrentTags(['social']).then(r => console.log(r))
-        }} />
-        <ItemDirection link={'https://ssr.kartevonmorgen.org/'} text={'Культура и креативные индустрии'}
-                       onClick={() => {
-                         redirectToCurrentTags(['culture']).then(r => console.log(r))
-                       }} />
-        <ItemDirection link={'https://ssr.kartevonmorgen.org/'} text={'Развитие сообществ и территорий'}
-                       onClick={() => {
-                         redirectToCurrentTags(['communities'])
-                       }} />
-        <ItemDirection link={'https://ssr.kartevonmorgen.org/'} text={'Образование и развитие человека'}
-                       onClick={() => {
-                         redirectToCurrentTags(['education'])
-                       }} />
-        <ItemDirection link={'https://ssr.kartevonmorgen.org/'} text={'Инфраструктура поддержки'} onClick={() => {
-          redirectToCurrentTags(['infrastructure'])
-        }} />
+        {tagsDescriptions.map(({icon, description, title}) => {
+          return <ItemDirection link={'https://ssr.kartevonmorgen.org/'} icon={icon} text={description} onClick={() => {
+            redirectToCurrentTags([title]).then(r => console.log(r))
+          }} />
+        })}
       </div>
     </div>
   )
@@ -54,14 +39,16 @@ export default ChooseDirectionSearch
 interface ItemDirectionProps {
   text: string
   link: string
+  icon: string
   onClick: () => void
 }
 
 
-function ItemDirection(props: ItemDirectionProps) {
+function ItemDirection({text, icon, onClick }: ItemDirectionProps) {
   return (
-    <div className={'item-direction co_map_text noselect'} onClick={props.onClick}>
-      {props.text}
-    </div>
+      <div className={'item-direction co_map_text noselect'} onClick={onClick}>
+      <div className='choose-direction-img-container'><img src={icon} className='direction-tag-icon' /></div>
+        {text}
+      </div>
   )
 }

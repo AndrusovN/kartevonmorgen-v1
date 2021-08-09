@@ -1,16 +1,14 @@
 import React, { FC, useState } from 'react'
-import { Checkbox, Form, Select, SelectProps } from 'antd'
+import { Checkbox, Form, Select } from 'antd'
 import { useDebounce } from 'ahooks'
 import useTagMatcher from '../hooks/useTagMatcher'
 import { MostPopularTagsParams } from '../pages/api/v0/entries/most-popular-tags'
-import { AxiosInstance } from '../api'
 import { useRouter } from 'next/router'
-import { BASICS_ENDPOINTS } from '../api/endpoints/BasicsEndpoints'
 import { getProjectNameFromQuery } from '../utils/slug'
-import { CheckboxValueType } from 'antd/es/checkbox/Group'
-
+import tagsDescription from '../public/co-map/tag_descriptions'
 
 const { Option } = Select
+
 
 
 const TagsSelect: FC<any> = (props) => {
@@ -56,24 +54,29 @@ const TagsSelect: FC<any> = (props) => {
   }
 
   // List of all "special" tags - tags, which have to be shown in checkboxes
-  const [tags, setTags] = useState<string[]>([])
+  //const [tags, setTags] = useState<string[]>([])
 
   // List of currently selected tags
   const [selectedTags, setSelectedTags] = useState<string[]>(initialData)
 
   // If we have no tags, get them from API
-  if (tags.length === 0) {
+  /*if (tags.length === 0) {
     AxiosInstance.GetRequest(BASICS_ENDPOINTS.getTags() + `?group=${group}`).then(response => {
       if (Array.isArray(response.data)) {
         setTags(response.data)
       }
     });
-  }
+  }*/
+
+  const tagsWithDesc = Object.entries(tagsDescription)
+  const tags = tagsWithDesc.map(tagDesc => tagDesc[0])
 
   // Make option object from tag
   let commonTagsOptions = []
-  tags.forEach(tag => {
-    commonTagsOptions.push({label: tag, value: tag})
+  tagsWithDesc.forEach(tagDesc => {
+    let desc = tagDesc[1]
+    commonTagsOptions.push({label: desc.toString(),
+      value: tagDesc[0]})
   })
 
   const tagMatcherParams: MostPopularTagsParams = {
@@ -147,12 +150,14 @@ const TagsSelect: FC<any> = (props) => {
     // Go for each tag in allTags
     // matchedTagsWithFrequency - list of objects like {tag: string, frequency: number}
     // we need only tag from this
-    matchedTagsWithFrequency.forEach(tagFr => {
-      let tag = tagFr.tag
-      if (selectedTags.includes(tag) || tag == value) {
-        newSelectedTags.push(tag)
-      }
+    if (selectedTags.includes(value)) {
+      return
+    }
+
+    selectedTags.forEach(tag => {
+      newSelectedTags.push(tag)
     })
+    newSelectedTags.push(value)
 
     setSelectedTags(newSelectedTags)
     setTagsCallback(newSelectedTags)
@@ -183,8 +188,6 @@ const TagsSelect: FC<any> = (props) => {
     setSelectedTags([])
     setTagsCallback(selectedTags)
   }
-
-  console.log("drawing tags select")
 
   let selectElement = <Select
     value={selectedTags}

@@ -1,6 +1,6 @@
-import { FC } from 'react'
+import React, { FC } from 'react'
 import { useRouter } from 'next/router'
-import { Button } from 'antd'
+import { Button, Tooltip } from 'antd'
 import { updateRoutingQuery } from '../utils/utils'
 import { AimOutlined } from '@ant-design/icons'
 import { createSlugPathFromQueryAndRemoveSlug } from '../utils/slug'
@@ -41,12 +41,13 @@ const LocateMe: FC = () => {
   const { t } = useTranslation('map')
 
   return (
-    <Button
-      title={t('entryForm.location')}
-      type='primary'
-      icon={<AimOutlined />}
-      onClick={setQueryParamsToCurrentLocation(router)}
-    />
+    <Tooltip placement='left' title={t('tooltip.locateMe')}>
+      <Button
+        type='primary'
+        icon={<AimOutlined />}
+        onClick={setQueryParamsToCurrentLocation(router)}
+      />
+    </Tooltip>
   )
 }
 
