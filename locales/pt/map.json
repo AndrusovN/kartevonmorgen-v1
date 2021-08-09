@@ -40,6 +40,8 @@
     "invalidLongitude": "Grau de longitude inválido",
     "invalidCategory": "Categoria inválida",
     "invalidTags": "Palavra-chave inválida",
+    "invalidTelephone": "Não é um número de telefone válido",
+    "invalidEmail": "Não é um e-mail válido",
     "minNumCharactersTags": "no minimo 3 caracteres",
     "acceptLicense": "A aprovação da licença é necessário",
     "invalidLicenseAgreement": "Aprovação inválida",

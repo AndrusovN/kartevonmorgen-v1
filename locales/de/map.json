@@ -58,6 +58,8 @@
     "invalidLongitude": "Ungültiger Längengrad",
     "invalidCategory": "Ungültige Kategorie",
     "invalidTags": "Ungültige Stichworte",
+    "invalidTelephone": "Keine gültige Telefonnummer",
+    "invalidEmail": "Keine gültige E-Mail",
     "minNumCharactersTags": "Mindestlänge von Stichworten: 3 Zeichen",
     "acceptLicense": "Lizenzzustimmung ist nötig",
     "invalidLicenseAgreement": "Ungültige Zustimmung",

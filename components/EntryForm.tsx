@@ -393,7 +393,7 @@ const EntryForm: FC<EntryFormProps> = (props) => {
               validator: (_, value) => (
                 isValidPhoneNumber(value) ?
                   Promise.resolve() :
-                  Promise.reject('not a valid telephone number')
+                  Promise.reject(t('entryForm.invalidTelephone'))
               ),
             },
           ]}
@@ -408,7 +408,7 @@ const EntryForm: FC<EntryFormProps> = (props) => {
               validator: (_, value) => (
                 isValidEmail(value) ?
                   Promise.resolve() :
-                  Promise.reject('not a valid email')
+                  Promise.reject(t('entryForm.invalidEmail'))
               ),
             },
           ]}

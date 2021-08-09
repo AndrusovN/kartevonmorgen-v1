@@ -58,6 +58,8 @@
     "invalidLongitude": "Неверная долгота",
     "invalidCategory": "Недействительная категория",
     "invalidTags": "Недействительные теги",
+    "invalidTelephone": "Неверный номер телефона",
+    "invalidEmail": "Недействительный адрес электронной почты",
     "minNumCharactersTags": "пожалуйста, предоставьте теги минимум из 3 символов",
     "acceptLicense": "Пожалуйста, примите лицензию",
     "invalidLicenseAgreement": "Недействительное лицензионное соглашение",

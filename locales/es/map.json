@@ -57,6 +57,8 @@
     "invalidLongitude": "Longitud inválida",
     "invalidCategory": "Categoría no válida",
     "invalidTags": "Etiquetas no válidas",
+    "invalidTelephone": "No es un número de teléfono válido",
+    "invalidEmail": "No es un email valido",
     "minNumCharactersTags": "Longitud mínima de las etiquetas: 3 caracteres",
     "acceptLicense": "Se requiere la aprobación de la licencia",
     "invalidLicenseAgreement": "Consentimiento no válido",
