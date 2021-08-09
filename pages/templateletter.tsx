@@ -1,10 +1,13 @@
 import React, { FC } from 'react'
 import Link from 'next/link'
+import HomeHeaderCoMap from '../components/co-map/HomeHeaderCoMap'
 
 
 const TemplateLetter: FC = () => {
 
   return (
+    <>
+    <HomeHeaderCoMap/>
     <div className='template'>
       <div className='instructions__container'>
         <section>
@@ -46,6 +49,7 @@ const TemplateLetter: FC = () => {
         </section>
       </div>
     </div>
+    </>
   )
 }
 

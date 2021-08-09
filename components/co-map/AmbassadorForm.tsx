@@ -2,9 +2,11 @@ import React, { FC } from 'react'
 import { Button, Form, Input, message } from 'antd'
 import { AxiosInstance } from '../../api'
 import { BASICS_ENDPOINTS } from '../../api/endpoints/BasicsEndpoints'
+import { textFromData } from '../../pages/api/v0/co-map/ambassador_application'
+import emailjs from 'emailjs-com'
 
 
-type AmbassadorFormType = {
+export type AmbassadorFormType = {
   name: string,
   location: string,
   contact: string,
@@ -14,8 +16,6 @@ type AmbassadorFormType = {
 
 const { useForm } = Form
 
-const ALERT_DISAPPEARING_TIME = 10000
-
 const MESSAGE_KEY = 'sending_application_messag'
 
 
@@ -24,14 +24,29 @@ const AmbassadorForm: FC = () => {
   const onFinish = () => async (answer: AmbassadorFormType) => {
     console.log(answer)
     message.loading({ content: 'Отправка...', key: MESSAGE_KEY })
-    AxiosInstance.PostRequest(BASICS_ENDPOINTS.co_map.postAmbassadorAssignment(), answer).then(response => {
+
+    emailjs.init(process.env.EMAILJS_ID)
+
+    emailjs.send("service_7pjuk1g", "template_leb2rrp", answer, 'user_VCmeQ7PykTTXVzRaXXiYz').then((result) => {
+      if (result) {
+        message.success({content: "Отправлено!", key: MESSAGE_KEY})
+      }
+      form.resetFields()
+    }, (error) => {
+      if (error) {
+        message.error({content: error.text, key: MESSAGE_KEY})
+      }
+      form.resetFields()
+    })
+
+    /*AxiosInstance.PostRequest(BASICS_ENDPOINTS.co_map.postAmbassadorAssignment(), answer).then(response => {
       if (response.status === 200) {
         message.success({ content: 'Отправлено!', key: MESSAGE_KEY })
         form.resetFields()
       } else {
         message.error({ content: 'Ошибка! :(', key: MESSAGE_KEY })
       }
-    })
+    })*/
   }
 
   const [form] = useForm<AmbassadorFormType>()

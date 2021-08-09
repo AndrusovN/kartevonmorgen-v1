@@ -1,11 +1,14 @@
 import React, { FC } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import HomeHeaderCoMap from '../components/co-map/HomeHeaderCoMap'
 
 
 const MappingInstructions: FC = () => {
 
   return (
+    <>
+    <HomeHeaderCoMap/>
     <div className='instructions'>
       <div className='instructions__container'>
         <section>
@@ -295,6 +298,7 @@ const MappingInstructions: FC = () => {
       </div>
       <br />
     </div>
+    </>
   )
 }
 

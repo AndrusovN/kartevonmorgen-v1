@@ -79,6 +79,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const project = path[0]
 
   // set configs
+  console.log("getting data!!!")
+  console.log(path)
   const pageConfigsReq = await AxiosInstance.GetRequest<MapPageConfigs>(
     API_ENDPOINTS.getMapPageConfigs(project),
   )
