@@ -7,7 +7,7 @@ const MappingInstructions: FC = () => {
 
   return (
     <div className='instructions'>
-      <div className='instructions__container container'>
+      <div className='instructions__container'>
         <section>
           <h1 className='co_map_largetext'>Инструкции по картированию</h1>
           <p className='co_map_mediumtext'><Link href={'/maps/main'}>co-map.ru</Link> - это платформа вроде Википедии,
