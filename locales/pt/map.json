@@ -1,5 +1,6 @@
 {
   "entryForm": {
+    "duration": "Selecione a duração necessária",
     "chooseCategory": "Escolher categoria",
     "location": "Lugar",
     "clickMap": "(ou clicar no mapa)",
@@ -34,8 +35,7 @@
     "invalidValues": "Dados inválidos",
     "descriptionTooLong": "Descrição muito longa",
     "descriptionTooShort": "Descrição muito curta",
-    "maxNumCharactersDescription": "no máximo 250 caracteres",
-    "minNumCharactersDescription": "no minimo 10 caracteres",
+    "numCharactersDescription": "no minimo 10 caracteres no máximo 250 caracteres",
     "invalidLatitude": "Grau de latitude inválido",
     "invalidLongitude": "Grau de longitude inválido",
     "invalidCategory": "Categoria inválida",
@@ -48,7 +48,9 @@
     "InfoHowToCopyURL": "Pode recuperar facilmente o endereço URL de qualquer imagem na web clicando na imagem para abrir o menu de contexto e seleccionando \"Copiar endereço gráfico\". Cole este URL (terminando em .jpg, .png ou similar) nesta linha!",
     "tutorialModalTitle": "Como obter um URL de imagem",
     "latitude": "Latitude",
-    "longitude": "Longitude"
+    "longitude": "Longitude",
+    "firstName": "Primeiro nome",
+    "lastName": "Último nome"
   },
   "entryDetails": {
     "loadingEntry": "Item à ser aberto...",
@@ -142,18 +144,17 @@
     "reference": "Quelle (z.B. einen Link oder 'ich arbeite da' etc.)",
     "ratingHeading": "Bewertung",
     "cancel": "abbrechen",
-    "save": "bewerten",
+    "save": "Bewerten",
     "requiredField": "Pflichtangabe",
     "titleTooLong": "Zu langer Titel",
     "titleTooShort": "Zu kurzer Titel",
-    "maxNumCharactersTitle": "statt max. 40 Zeichen",
-    "minNumCharactersTitle": "von mind. 3 Zeichen",
+    "тumCharactersTitle": "von mind. 3 Zeichen statt max. 40 Zeichen",
     "invalidRatingContext": "Ungültiger Bewertungskontext",
     "invalidRating": "Ungültige Bewertung",
     "commentTooLong": "Zu langer Kommentar",
     "commentTooShort": "Zu wenig Text",
-    "maxNumCharactersComment": "statt max. 500 Zeichen",
-    "minNumCharactersComment": "von mind. 10 Zeichen"
+    "NumCharactersComment": "von mind. 10 Zeichen statt max. 500 Zeichen",
+    "tags": "Tag"
   },
   "subscribeToBbox": {
     "changeSubscription": {

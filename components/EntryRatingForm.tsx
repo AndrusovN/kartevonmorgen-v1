@@ -130,7 +130,7 @@ const EntryRatingForm: FC<EntryRatingFormProps> = (props) => {
         <Form.Item
           name="context"
           label={<Text strong>{t('ratingForm.chooseContext')}:</Text>}
-          rules={[{ required: true, message: 'Please pick an item!' }]}
+          rules={[{ required: true, message: t('ratingForm.chooseContext') }]}
         >
           <Radio.Group>
             <Space direction="vertical">
@@ -170,14 +170,14 @@ const EntryRatingForm: FC<EntryRatingFormProps> = (props) => {
 
         <Form.Item
           name="title"
-          rules={[{ required: true, min: 3, max: 40 }]}
+          rules={[{ required: true, min: 3, max: 40, message:t('ratingForm.numCharactersTitle') }]}
         >
           <Input placeholder={t('ratingForm.title')}/>
         </Form.Item>
 
         <Form.Item
           name="comment"
-          rules={[{ required: true, min: 10, max: 500 }]}
+          rules={[{ required: true, min: 10, max: 500, message: t('ratingForm.numCharactersComment')}]}
         >
           <TextArea placeholder={t('ratingForm.comment')}/>
         </Form.Item>
@@ -191,7 +191,7 @@ const EntryRatingForm: FC<EntryRatingFormProps> = (props) => {
         <Form.Item
           name="value"
           label={<Text strong>{t('ratings.rating-heading')}:</Text>}
-          rules={[{ required: true, message: 'Please pick an item!' }]}
+          rules={[{ required: true, message: t('commentForm.chooseContext') }]}
         >
           <Radio.Group>
             <Space direction="vertical">
@@ -221,7 +221,7 @@ const EntryRatingForm: FC<EntryRatingFormProps> = (props) => {
             width: '100%',
           }}
         >
-          Submit
+          {t('ratingForm.save')}
         </Button>
 
       </Form>

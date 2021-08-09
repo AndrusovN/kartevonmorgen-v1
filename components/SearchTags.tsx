@@ -124,7 +124,7 @@ export const SearchTags: FC<SearchTagsType> = ({ optionsCount = [],
           <TagsSelect
 
             setTagsCallback={resetTagsList}
-            //placeholder={t('searchbar.placeholder')}
+            placeholder={t('searchbar.placeholder')}
             /*onSelect={(value, option) => {
               addTag(value)
               searchTag(router)

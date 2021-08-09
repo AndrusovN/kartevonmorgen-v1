@@ -5,6 +5,7 @@
       "event": "Event",
       "company": "Enterprise (shops, services & needs)"
     },
+    "duration": "Select the required duration",
     "chooseCategory": "Select category",
     "location": "Location",
     "clickMap": "(click on the map)",
@@ -52,12 +53,12 @@
     "invalidValues": "Invalid values",
     "descriptionTooLong": "Description too long",
     "descriptionTooShort": "Description too short",
-    "maxNumCharactersDescription": "out of max. 250 characters",
-    "minNumCharactersDescription": "characters, minimum: 10",
+    "numCharactersDescription": "characters, minimum: 10 out of max. 250 characters",
     "invalidLatitude": "Invalid Latitude",
     "invalidLongitude": "Invalid Longitude",
     "invalidCategory": "Invalid Category",
     "invalidTags": "Invalid tags",
+    "invalidTelephone": "not a valid telephone number",
     "minNumCharactersTags": "please provide tags with a minimum of 3 characters",
     "acceptLicense": "Please accept the license",
     "invalidLicenseAgreement": "Invalid License Agreement",
@@ -69,7 +70,9 @@
     "linkTitle": "Link Title (optional)",
     "linkDescription": "Link Description (optional)",
     "latitude": "Latitude",
-    "longitude": "Longitude"
+    "longitude": "Longitude",
+    "firstName": "First Name",
+    "lastName": "Last Name"
   },
   "entryDetails": {
     "loadingEntry": "loading entry...",
@@ -179,18 +182,17 @@
     "reference": "Reference (e.g. a link or \"I work there.\", etc.)",
     "ratingHeading": "Rating",
     "cancel": "cancel",
-    "save": "save rating",
+    "save": "Save rating",
     "requiredField": "required field",
     "titleTooLong": "Title too long",
     "titleTooShort": "Title too short",
-    "maxNumCharactersTitle": "out of max. 40 characters",
-    "minNumCharactersTitle": "characters, minimum: 3",
+    "тumCharactersTitle": "characters, minimum: 3 out of max. 40 characters",
     "invalidRatingContext": "Invalid Rating Context",
     "invalidRating": "Invalid Rating",
     "commentTooLong": "Comment too long",
     "commentTooShort": "Comment too short",
-    "maxNumCharactersComment": "out of max. 500 characters",
-    "minNumCharactersComment": "characters, minimum 10"
+    "NumCharactersComment": "characters, minimum 10 out of max. 500 characters",
+    "tags": "Tags"
   },
   "commentForm": {
     "chooseContext": "Add your rating to the following sustainability criterion of this entry",

@@ -229,14 +229,14 @@ const EventForm: FC<EventFormProps> = (props) => {
 
         <Form.Item
           name='title'
-          rules={[{ required: true, min: 3 , message: t('entryForm.minNumCharactersTitle')}]}
+          rules={[{ required: true, min: 3, message: t('entryForm.minNumCharactersTitle') }]}
         >
           <Input placeholder={t('entryForm.title')} />
         </Form.Item>
 
         <Form.Item
           name='duration'
-          rules={[{ required: true }]}
+          rules={[{ required: true, message: t('entryForm.duration') }]}
         >
           <RangePicker
             showTime={{ format: 'HH:mm' }}
@@ -246,13 +246,14 @@ const EventForm: FC<EventFormProps> = (props) => {
 
         <Form.Item
           name='description'
-          rules={[{ required: true }, { min: 10 }, { max: 250 }]}
+          rules={[{ required: true, min: 10, max: 250, message: t('entryForm.numCharactersDescription') }]}
         >
           <TextArea placeholder={t('entryForm.description')} />
         </Form.Item>
 
         <Form.Item name='tags'>
-          <TagsSelect setTagsCallback={setTagsCallback} initialData={tagsInitial} isFormPart={true}/>
+          <TagsSelect placeholder={t('entryForm.tags')} setTagsCallback={setTagsCallback} initialData={tagsInitial}
+                      isFormPart={true} />
         </Form.Item>
 
         <Divider orientation='left'>{t('entryForm.location')}</Divider>
@@ -378,7 +379,7 @@ const EventForm: FC<EventFormProps> = (props) => {
 
         <Form.Item
           name='license'
-          rules={[{ required: true , message: t('entryForm.acceptLicense')}]}
+          rules={[{ required: true, message: t('entryForm.acceptLicense') }]}
           valuePropName='value'
         >
           {/*it's necessary to catch the value of the checkbox, but the out come will be a list*/}

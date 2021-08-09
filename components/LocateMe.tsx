@@ -5,6 +5,7 @@ import { updateRoutingQuery } from '../utils/utils'
 import { AimOutlined } from '@ant-design/icons'
 import { createSlugPathFromQueryAndRemoveSlug } from '../utils/slug'
 import { getCurrentPosition } from '../utils/geolocation'
+import useTranslation from 'next-translate/useTranslation'
 
 
 export const setQueryParamsToCurrentLocation = (router) => async () => {
@@ -37,11 +38,13 @@ export const setQueryParamsToCurrentLocation = (router) => async () => {
 
 const LocateMe: FC = () => {
   const router = useRouter()
+  const { t } = useTranslation('map')
 
   return (
     <Button
-      type="primary"
-      icon={<AimOutlined/>}
+      title={t('entryForm.location')}
+      type='primary'
+      icon={<AimOutlined />}
       onClick={setQueryParamsToCurrentLocation(router)}
     />
   )
