@@ -67,16 +67,14 @@ const TagsSelect: FC<any> = (props) => {
       }
     });
   }*/
-
-  const tagsWithDesc = Object.entries(tagsDescription)
-  const tags = tagsWithDesc.map(tagDesc => tagDesc[0])
+  const tags = tagsDescription.map(tagDesc => tagDesc.title)
 
   // Make option object from tag
   let commonTagsOptions = []
-  tagsWithDesc.forEach(tagDesc => {
-    let desc = tagDesc[1]
+  tagsDescription.forEach(tagDesc => {
+    let desc = tagDesc.description
     commonTagsOptions.push({label: desc.toString(),
-      value: tagDesc[0]})
+      value: tagDesc.title})
   })
 
   const tagMatcherParams: MostPopularTagsParams = {
