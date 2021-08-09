@@ -4,6 +4,7 @@ import { AxiosInstance } from '../../api'
 import { BASICS_ENDPOINTS } from '../../api/endpoints/BasicsEndpoints'
 import { textFromData } from '../../pages/api/v0/co-map/ambassador_application'
 import emailjs from 'emailjs-com'
+import emailjs_setup from '../../public/co-map/emailjs_setup.json'
 
 
 export type AmbassadorFormType = {
@@ -18,16 +19,15 @@ const { useForm } = Form
 
 const MESSAGE_KEY = 'sending_application_message'
 
-
 const AmbassadorForm: FC = () => {
 
   const onFinish = () => async (answer: AmbassadorFormType) => {
-    console.log(answer)
     message.loading({ content: 'Отправка...', key: MESSAGE_KEY })
 
-    emailjs.init(process.env.EMAILJS_ID)
 
-    emailjs.send(process.env.EMAILJS_SERVICE_ID, process.env.EMAILJS_TEMPLATE_ID, answer, process.env.EMAILJS_ID)
+    emailjs.init(emailjs_setup.EMAILJS_ID)
+
+    emailjs.send(emailjs_setup.EMAILJS_SERVICE_ID, emailjs_setup.EMAILJS_TEMPLATE_ID, answer, emailjs_setup.EMAILJS_ID)
       .then((result) => {
         if (result) {
           message.success({content: "Отправлено!", key: MESSAGE_KEY})
