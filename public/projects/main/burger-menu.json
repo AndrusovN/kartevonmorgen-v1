@@ -1,12 +1,12 @@
 [
   {
-    "link": "https://co-map.ru/",
+    "link": "/",
     "title": "home",
     "icon": "home",
     "policy": "self"
   },
   {
-    "link": "https://co-map.ru/mappinginstructions/",
+    "link": "/mappinginstructions/",
     "title": "docs",
     "icon": "info-circle",
     "policy": "newTab"
@@ -18,13 +18,13 @@
     "policy": "newTab"
   },
   {
-    "link": "https://co-map.ru/",
+    "link": "/?moveToId=team_co_map",
     "title": "contact",
     "icon": "headset",
     "policy": "newTab"
   },
   {
-    "link": "https://co-map.ru/privacy/",
+    "link": "/privacy_policy/",
     "title": "privacy",
     "icon": "user-shield",
     "policy": "newTab"

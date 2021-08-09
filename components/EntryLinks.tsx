@@ -9,6 +9,7 @@ import { titleCase } from 'title-case'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconName, IconPrefix } from '@fortawesome/fontawesome-svg-core'
 import { getIconDir } from '../utils/tags'
+import useTranslation from 'next-translate/useTranslation'
 
 
 interface EntryLinksProps {
@@ -154,11 +155,11 @@ const EntryLinks: FC<EntryLinksProps> = (props) => {
 
   //since enrichedLinks is a copy from immer we are safe to sort in place
   enrichedLinks.sort(enrichedLinkDetailsSortFunc)
-
+const {t} = useTranslation('map')
   return (
     <Fragment>
 
-      <Divider>Links</Divider>
+      <Divider>{t('entryForm.links')}</Divider>
 
       <Space
         wrap

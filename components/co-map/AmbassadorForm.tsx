@@ -16,7 +16,7 @@ export type AmbassadorFormType = {
 
 const { useForm } = Form
 
-const MESSAGE_KEY = 'sending_application_messag'
+const MESSAGE_KEY = 'sending_application_message'
 
 
 const AmbassadorForm: FC = () => {
@@ -27,11 +27,12 @@ const AmbassadorForm: FC = () => {
 
     emailjs.init(process.env.EMAILJS_ID)
 
-    emailjs.send("service_7pjuk1g", "template_leb2rrp", answer, 'user_VCmeQ7PykTTXVzRaXXiYz').then((result) => {
-      if (result) {
-        message.success({content: "Отправлено!", key: MESSAGE_KEY})
-      }
-      form.resetFields()
+    emailjs.send(process.env.EMAILJS_SERVICE_ID, process.env.EMAILJS_TEMPLATE_ID, answer, process.env.EMAILJS_ID)
+      .then((result) => {
+        if (result) {
+          message.success({content: "Отправлено!", key: MESSAGE_KEY})
+        }
+        form.resetFields()
     }, (error) => {
       if (error) {
         message.error({content: error.text, key: MESSAGE_KEY})

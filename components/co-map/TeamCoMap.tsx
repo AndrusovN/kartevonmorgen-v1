@@ -9,7 +9,7 @@ const { Title, Paragraph } = Typography
 
 export const TeamCoMap: FC = () => {
   return (
-    <div style={{ paddingTop: '30px' }}>
+    <div style={{ paddingTop: '30px' }} id={"team_co_map"}>
       <Title
         level={1}
         className={'co_map_title'}

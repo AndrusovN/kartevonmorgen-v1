@@ -5,6 +5,7 @@
       "event": "Event",
       "company": "Unternehmen (Läden, Dienstleistungen & Bedürfnisse)"
     },
+    "duration": "Wählen Sie die gewünschte Dauer",
     "chooseCategory": "Kategorie auswählen",
     "location": "Ort",
     "clickMap": "(auf Karte klicken)",
@@ -52,12 +53,13 @@
     "invalidValues": "Ungültige Daten",
     "descriptionTooLong": "Zu lange Beschreibung",
     "descriptionTooShort": "Zu wenig Text",
-    "maxNumCharactersDescription": "statt max. 250 Zeichen",
-    "minNumCharactersDescription": "von mind. 10 Zeichen",
+    "numCharactersDescription": "von mind. 10 Zeichen statt max. 250 Zeichen",
     "invalidLatitude": "Ungültiger Breitengrad",
     "invalidLongitude": "Ungültiger Längengrad",
     "invalidCategory": "Ungültige Kategorie",
     "invalidTags": "Ungültige Stichworte",
+    "invalidTelephone": "Keine gültige Telefonnummer",
+    "invalidEmail": "Keine gültige E-Mail",
     "minNumCharactersTags": "Mindestlänge von Stichworten: 3 Zeichen",
     "acceptLicense": "Lizenzzustimmung ist nötig",
     "invalidLicenseAgreement": "Ungültige Zustimmung",
@@ -69,7 +71,9 @@
     "linkTitle": "Link Titel (optional)",
     "linkDescription": "Link Beschreibung (optional)",
     "latitude": "Breite",
-    "longitude": "Längengrad"
+    "longitude": "Längengrad",
+    "firstName": "Vorname",
+    "lastName": "Nachname"
   },
   "entryDetails": {
     "loadingEntry": "Eintrag wird geladen...",
@@ -179,18 +183,17 @@
     "reference": "Quelle (z.B. einen Link oder 'ich arbeite da', etc.)",
     "ratingHeading": "Bewertung",
     "cancel": "abbrechen",
-    "save": "bewerten",
+    "save": "Bewerten",
     "requiredField": "Pflichtangabe",
     "titleTooLong": "Zu langer Titel",
     "titleTooShort": "Zu kurzer Titel",
-    "maxNumCharactersTitle": "statt max. 40 Zeichen",
-    "minNumCharactersTitle": "von mind. 3 Zeichen",
+    "тumCharactersTitle": "von mind. 3 Zeichen statt max. 40 Zeichen",
     "invalidRatingContext": "Ungültiger Bewertungskontext",
     "invalidRating": "Ungültige Bewertung",
     "commentTooLong": "Zu langer Kommentar",
     "commentTooShort": "Zu wenig Text",
-    "maxNumCharactersComment": "statt max. 500 Zeichen",
-    "minNumCharactersComment": "von mind. 10 Zeichen"
+    "тumCharactersComment": "von mind. 10 Zeichen statt max. 500 Zeichen",
+    "tags": "Stichworte"
   },
   "commentForm": {
     "chooseContext": "Ergänze mit deiner Bewertung folgenden Aspekt der Nachhaltigkeit dieses Eintrags",

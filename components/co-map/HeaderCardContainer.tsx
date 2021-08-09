@@ -17,8 +17,6 @@ function HeaderCardContainer() {
       }
     }
 
-    console.log(yToScroll)
-
     window.scrollTo({top: yToScroll, behavior: "smooth"})
   }
 

@@ -323,14 +323,14 @@ const EntryForm: FC<EntryFormProps> = (props) => {
 
       <Form.Item
         name="description"
-        rules={[{ required: true, min: 10, max: 250 }]}
+        rules={[{ required: true, min: 10, max: 250, message: t('entryForm.numCharactersDescription') }]}
       >
         <TextArea placeholder={t("entryForm.description")}/>
       </Form.Item>
 
       {/*add validation for the three tags*/}
       <Form.Item>
-        <TagsSelect initialData={entry.tags} setTagsCallback={setTagsCallback} isFormPart={true}/>
+        <TagsSelect placeholder={t('entryForm.tags')} initialData={entry.tags} setTagsCallback={setTagsCallback} isFormPart={true}/>
       </Form.Item>
 
       <Divider orientation="left">{t('entryForm.location')}</Divider>
@@ -393,7 +393,7 @@ const EntryForm: FC<EntryFormProps> = (props) => {
               validator: (_, value) => (
                 isValidPhoneNumber(value) ?
                   Promise.resolve() :
-                  Promise.reject('not a valid telephone number')
+                  Promise.reject(t('entryForm.invalidTelephone'))
               ),
             },
           ]}
@@ -408,7 +408,7 @@ const EntryForm: FC<EntryFormProps> = (props) => {
               validator: (_, value) => (
                 isValidEmail(value) ?
                   Promise.resolve() :
-                  Promise.reject('not a valid email')
+                  Promise.reject(t('entryForm.invalidEmail'))
               ),
             },
           ]}
@@ -445,14 +445,14 @@ const EntryForm: FC<EntryFormProps> = (props) => {
                     name={[field.name, 'first']}
                     fieldKey={[field.fieldKey, 'first']}
                   >
-                    <Input placeholder='First Name' />
+                    <Input placeholder={t('entryForm.firstName')} />
                   </Form.Item>
                   <Form.Item
                     {...field}
                     name={[field.name, 'last']}
                     fieldKey={[field.fieldKey, 'last']}
                   >
-                    <Input placeholder='Last Name' />
+                    <Input placeholder={t('entryForm.lastName')} />
                   </Form.Item>
                   <MinusCircleOutlined onClick={() => remove(field.name)} />
                 </Space>

@@ -39,10 +39,11 @@ export const setQueryParamsToCurrentLocation = (router) => async () => {
 const LocateMe: FC = () => {
   const router = useRouter()
   const { t } = useTranslation('map')
+
   return (
-    <Tooltip placement="left" title={t("tooltip.locateMe")}>
+    <Tooltip placement='left' title={t('tooltip.locateMe')}>
       <Button
-        type="primary"
+        type='primary'
         icon={<AimOutlined />}
         onClick={setQueryParamsToCurrentLocation(router)}
       />

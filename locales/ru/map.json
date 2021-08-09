@@ -5,6 +5,7 @@
       "event": "Событие",
       "company": "Предприятие (магазины, услуги и потребности)"
     },
+    "duration": "Выберите необходимую продолжительность",
     "chooseCategory": "Выберите категорию",
     "location": "Расположение",
     "clickMap": "(щелкните по карте)",
@@ -52,12 +53,13 @@
     "invalidValues": "Недействительные значения",
     "descriptionTooLong": "Описание слишком длинное",
     "descriptionTooShort": "Описание слишком короткое",
-    "maxNumCharactersDescription": "из макс.\n250 знаков",
-    "minNumCharactersDescription": "символов, минимум: 10",
+    "numCharactersDescription": "символов, минимум: 10 из макс. 250 знаков",
     "invalidLatitude": "Неверная широта",
     "invalidLongitude": "Неверная долгота",
     "invalidCategory": "Недействительная категория",
     "invalidTags": "Недействительные теги",
+    "invalidTelephone": "Неверный номер телефона",
+    "invalidEmail": "Недействительный адрес электронной почты",
     "minNumCharactersTags": "пожалуйста, предоставьте теги минимум из 3 символов",
     "acceptLicense": "Пожалуйста, примите лицензию",
     "invalidLicenseAgreement": "Недействительное лицензионное соглашение",
@@ -69,7 +71,9 @@
     "linkTitle": "Название ссылки (необязательно)",
     "linkDescription": "Описание ссылки (необязательно)",
     "latitude": "Широта",
-    "longitude": "Долгота"
+    "longitude": "Долгота",
+    "firstName": "Имя",
+    "lastName": "Фамилия"
   },
   "entryDetails": {
     "loadingEntry": "загрузка записи ...",
@@ -178,25 +182,24 @@
     "comment": "Комментарий.Пояснение",
     "reference": "Упоминание (например, ссылка или «Я там работаю» и т.д.)",
     "ratingHeading": "Рейтинг",
-    "cancel": "отменить",
-    "save": "сохранить рейтинг",
+    "cancel": "Отменить",
+    "save": "Сохранить рейтинг",
     "requiredField": "Обязательное поле",
     "titleTooLong": "Заголовок слишком длинный",
     "titleTooShort": "Слишком короткое название",
-    "maxNumCharactersTitle": "из макс. 40 символов",
-    "minNumCharactersTitle": "символов, минимум: 3",
+    "numCharactersTitle": "символов, минимум: 3 из макс. 40 символов",
     "invalidRatingContext": "Недействительный контекст рейтинга",
     "invalidRating": "Недействительный рейтинг",
     "commentTooLong": "Комментарий слишком длинный",
     "commentTooShort": "Комментарий слишком короткий",
-    "maxNumCharactersComment": "из макс. 500 знаков",
-    "minNumCharactersComment": "символы, минимум 10"
+    "numCharactersComment": "символы, минимум 10 из макс. 500 знаков",
+    "tags": "Тэги"
   },
   "commentForm": {
-    "commentForm.chooseContext": "Добавьте свой рейтинг к следующему критерию устойчивости этой записи",
-    "commentForm.newCommentFor": "Новый комментарий для",
-    "commentForm.newComment": "Новый комментарий",
-    "commentForm.save": "комментарий"
+    "chooseContext": "Добавьте свой рейтинг к следующему критерию устойчивости этой записи",
+    "newCommentFor": "Новый комментарий для",
+    "newComment": "Новый комментарий",
+    "save": "Сохранить комментарий"
   },
   "subscribeToBbox": {
     "changeSubscription": {
